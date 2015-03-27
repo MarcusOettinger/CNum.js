@@ -1,0 +1,30 @@
+\begin{DoxyAuthor}{Author}
+Marcus Oettinger 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+06.\+03.\+2015 
+\end{DoxyDate}
+\hypertarget{index_CNum}{}\section{C\+Num.\+js}\label{index_CNum}
+\hyperlink{_c_num_8js_source}{C\+Num.\+js} is a javascript class to display a complex number in a gaussian plane (this is sometimes called an Argand-\/\+Plot) on a html5-\/canvas and do a quite limited set of calculations with an arbitrary complex number. \hypertarget{index_features}{}\subsection{Features}\label{index_features}
+C\+Num is a javascript object holding the value of a complex number z (set by a simple algebraic expression) that can be used to display the complex number in different bases or to plot a vector-\/like diagram of z in the complex plane. Graphics are drawn onto a html5 canvas -\/ this should nowadays be supported by many browsers.
+
+I wrote the code because I needed a dynamic way to create an Argand diagram in my pages for educational purposes. It serves a purpose and is far from being cleanly written, nicely formatted or similar. If you like it, use it, If you don't
+\begin{DoxyItemize}
+\item guess what \+:-\/) 
+\end{DoxyItemize}\hypertarget{index_deps}{}\subsection{dependencies}\label{index_deps}
+\hyperlink{_c_num_8js_source}{C\+Num.\+js} uses some external libraries\+:
+
+
+\begin{DoxyItemize}
+\item jquery\+:
+\item jcanvas\+: \href{http://calebevans.me/projects/jcanvas/}{\tt http\+://calebevans.\+me/projects/jcanvas/} (drawing routines)
+\item mathjs\+: \href{http://mathjs.org}{\tt http\+://mathjs.\+org} (that can do much more!) 
+\end{DoxyItemize}\hypertarget{index_license}{}\subsection{License}\label{index_license}
+M\+I\+T (see \href{http://opensource.org/licenses/MIT}{\tt http\+://opensource.\+org/licenses/\+M\+I\+T} or L\+I\+C\+E\+N\+S\+E.\+txt).\hypertarget{index_constructor}{}\subsection{Constructor}\label{index_constructor}
+Constructor for a C\+Num -\/ the complex value is set via an algebraic expression. usage\+: object = new C\+Num( expression ) creates a new complex number, e.\+g. z = new C\+Num(\char`\"{}2+i\char`\"{});
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em expr} & string representation of a complex number (parsed by mathjs, e.\+g. '2+3i', '12$\ast$exp(3i)') \\
+\hline
+\end{DoxyParams}
