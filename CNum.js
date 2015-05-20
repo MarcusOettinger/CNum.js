@@ -1,14 +1,18 @@
-// M. Oettinger 03/2015, Marcus -at- oettinger-physics.de
-// pandoc (!)
+// M. Oettinger 04/2015, Marcus -at- oettinger-physics.de
 //
-/** @file CNum.js: sketch the complex plane in a html5 canvas
+/** 
+ *  @file CNum.js: sketch the complex plane in a html5 canvas
  *  @author Marcus Oettinger
- *  @classdesc CNum CNum.js
- *  @version 0.3
- * CNum.js is a javascript class used to display a complex number in a gaussian plane
+ *  @version 0.3.1
+ * @fileOverview CNum.js is a javascript class used to display a complex number in a gaussian plane
  * (this is sometimes called an Argand-Plot) on a html5-canvas and
  * do a quite limited set of calculations with an arbitrary complex number.
- *  @subsection features Features
+ */
+/**
+ * @license MIT (see {@link http://opensource.org/licenses/MIT} or LICENSE.txt).
+ */
+/**
+ * @classdesc
  * CNum is a javascript object holding the value of a complex number z (set by
  * an algebraic expression in text form) that can be used to display the complex 
  * number as a string
@@ -21,19 +25,15 @@
  * being cleanly written, nicely formatted or similar. If you like it, use it, If you don't
  * - guess what :-)
  * 
+ * @class Constructor for a CNum - the complex value is set via an algebraic expression.
+ * usage: object = new CNum( expression ) creates a new complex number, e.g.
+ *        z = new CNum("2+i");
+ * 
  * CNum.js uses some external libraries:
  *
  * - jquery: {@link http://jquery.org}
  * - jcanvas: {@link http://calebevans.me/projects/jcanvas/} (drawing routines)
  * - mathjs: {@link http://mathjs.org} (that can do much more!)
- * @license MIT (see {@link http://opensource.org/licenses/MIT} or LICENSE.txt).
- */
-/**
- * 
- * Constructor for a CNum - the complex value is set via an algebraic expression.
- * usage: object = new CNum( expression ) creates a new complex number, e.g.
- *        z = new CNum("2+i");
- * @class 
  * @param {string} expr - a text representing a complex number (parsed by mathjs, e.g. '2+3i', '12*exp(3i)')
 */
 function CNum(expr) {
@@ -60,6 +60,7 @@ function CNum(expr) {
             		coords: false, 		// draw coordinate system
 
             		// options for complex numbers
+            		Arrow: true, 		// draw an arrow - if set to false, draw a point
             		circle: false, 		// draw a circle with radius |z|
             		ReIm: true, 		// show real and imaginary part
             		Ctext: true,		// print z in cartesian notation
@@ -67,8 +68,7 @@ function CNum(expr) {
 
             		// colors
             		color: "#888", 		// color to use for arrow, text, angle
-            		colarrow: false 		// colored arrow (default is black)
-
+            		colarrow: false 		// colored arrow and text (default is black)
         };
 
 
@@ -165,6 +165,7 @@ function CNum(expr) {
         }; // drawReIm
 
 
+
         // draw a complex number z= x + iy in gaussian / argand plane.
         // (polar representation of coordinates x/y in cartesian system.
         // x,y is the starting point of the free vector to draw.
@@ -178,16 +179,20 @@ function CNum(expr) {
                 y = _YScaled(ystart);
 
                 style = settings.colarrow?settings.color:"#000";
-
-                _daCanvas.drawLine({ strokeStyle: style, strokeWidth: 2, rounded: false,
+                if (settings.Arrow)
+                    _daCanvas.drawLine({ strokeStyle: style, strokeWidth: 2, rounded: false,
                         endArrow: true, arrowRadius: 10, arrowAngle: 45, 
                         x1: X_C + x, y1: Y_C - y, x2: xpos + x, y2: ypos - y });
+                else
+                    _daCanvas.drawRect({ strokeStyle: style, strokeWidth: 2, fromCenter: true,
+                       x: xpos, y: ypos, width: 5, height: 5 });
 
                 if (settings.Ctext) 
                     _daCanvas.drawText({ strokeStyle: style, strokeWidth: 1,
                             x: xpos + x +10, y: ypos-(sign(z.y)*10) - y, fontSize: 12, fontFamily: 'serif',
                             text: 'z =' + math.complex(z.x, z.y).toString() });
         }; //drawz
+
 
 
         // drawAngle: draw an angle of the arrow (mathematically starting from x-axis)
@@ -218,6 +223,7 @@ function CNum(expr) {
         // =======================================================
         // return radius of the complex cartesian x+iy in gaussian plane
         this.getradius = function() { return _radius;  };
+
 
         // Return complex number z in cartesian coordinates as html string.
         //
@@ -302,15 +308,15 @@ function CNum(expr) {
 
 
         // add sum of zs to plot - add to existing plot
-        this.addCNum =function(z2, options, resultoptions){
+        this.addCNum =function(_zToAdd, options, resultoptions){
             resultoptions = ( typeof resultoptions == 'undefined' ? options : resultoptions);
 
-            // calculate resulting value z = this + z2
-            res = new CNum( (this.zNum + z2.zNum).toString() );
+            // calculate resulting value z = this + _zToAdd
+            res = new CNum( this.zNum.toString() + "+" + _zToAdd.zNum.toString() );
             // replot this and rescale to largest absolute value
-            this.displayGauss(options, getmax(this.getradius(), z2.getradius(), res.getradius()));	
+            this.displayGauss(options, getmax(this.getradius(), _zToAdd.getradius(), res.getradius()));	
 
-            this.addVector(z2, this.x, this.y, options);		// vector addition of this and s2
+            this.addVector(_zToAdd, this.x, this.y, options);		// vector addition of this and _zToAdd
             this.addToPlot(res, resultoptions);			// display the result
             return res;
         }
@@ -352,7 +358,7 @@ function CNum(expr) {
                 var settings = $.extend( {}, _defaults, options );
                 if (settings.arc) drawAngle(z.angle, settings);
                 if (settings.ReIm) drawReIm(z.x, z.y, settings.color);
-                drawz( z, settings, x , y );
+               drawz( z, settings, x , y );
                 _count++;
         }; // addToPlot
 

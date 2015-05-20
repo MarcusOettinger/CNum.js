@@ -6,41 +6,41 @@
 	.REGX {color: #339;}
 	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
 	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">// M. Oettinger 03/2015, Marcus -at- oettinger-physics.de</span><span class="WHIT">
-<span class='line'>  2</span> </span><span class="COMM">// pandoc (!)</span><span class="WHIT">
-<span class='line'>  3</span> </span><span class="COMM">//</span><span class="WHIT">
-<span class='line'>  4</span> </span><span class="COMM">/** @file CNum.js: sketch the complex plane in a html5 canvas
+<span class='line'>  2</span> </span><span class="COMM">//</span><span class="WHIT">
+<span class='line'>  3</span> </span><span class="COMM">/** 
+<span class='line'>  4</span>  *  @file CNum.js: sketch the complex plane in a html5 canvas
 <span class='line'>  5</span>  *  @author Marcus Oettinger
-<span class='line'>  6</span>  *  @classdesc CNum CNum.js
-<span class='line'>  7</span>  *  @version 0.3
-<span class='line'>  8</span>  * CNum.js is a javascript class used to display a complex number in a gaussian plane
-<span class='line'>  9</span>  * (this is sometimes called an Argand-Plot) on a html5-canvas and
-<span class='line'> 10</span>  * do a quite limited set of calculations with an arbitrary complex number.
-<span class='line'> 11</span>  *  @subsection features Features
-<span class='line'> 12</span>  * CNum is a javascript object holding the value of a complex number z (set by
-<span class='line'> 13</span>  * an algebraic expression in text form) that can be used to display the complex 
-<span class='line'> 14</span>  * number as a string
-<span class='line'> 15</span>  * in different bases or to plot a vector-like diagram of z in the complex plane.
-<span class='line'> 16</span>  * Graphics are drawn onto a html5 canvas - this should nowadays be supported 
-<span class='line'> 17</span>  * by most browsers.
-<span class='line'> 18</span>  *
-<span class='line'> 19</span>  * I wrote the code because I needed a dynamic Argand diagram in webpages
-<span class='line'> 20</span>  * for a a basic maths lecture. It serves a purpose and is far from
-<span class='line'> 21</span>  * being cleanly written, nicely formatted or similar. If you like it, use it, If you don't
-<span class='line'> 22</span>  * - guess what :-)
-<span class='line'> 23</span>  * 
-<span class='line'> 24</span>  * CNum.js uses some external libraries:
-<span class='line'> 25</span>  *
-<span class='line'> 26</span>  * - jquery: {@link http://jquery.org}
-<span class='line'> 27</span>  * - jcanvas: {@link http://calebevans.me/projects/jcanvas/} (drawing routines)
-<span class='line'> 28</span>  * - mathjs: {@link http://mathjs.org} (that can do much more!)
-<span class='line'> 29</span>  * @license MIT (see {@link http://opensource.org/licenses/MIT} or LICENSE.txt).
-<span class='line'> 30</span>  */</span><span class="WHIT">
-<span class='line'> 31</span> </span><span class="COMM">/**
-<span class='line'> 32</span>  * 
-<span class='line'> 33</span>  * Constructor for a CNum - the complex value is set via an algebraic expression.
-<span class='line'> 34</span>  * usage: object = new CNum( expression ) creates a new complex number, e.g.
-<span class='line'> 35</span>  *        z = new CNum("2+i");
-<span class='line'> 36</span>  * @class 
+<span class='line'>  6</span>  *  @version 0.3
+<span class='line'>  7</span>  * @fileOverview CNum.js is a javascript class used to display a complex number in a gaussian plane
+<span class='line'>  8</span>  * (this is sometimes called an Argand-Plot) on a html5-canvas and
+<span class='line'>  9</span>  * do a quite limited set of calculations with an arbitrary complex number.
+<span class='line'> 10</span>  */</span><span class="WHIT">
+<span class='line'> 11</span> </span><span class="COMM">/**
+<span class='line'> 12</span>  * @license MIT (see {@link http://opensource.org/licenses/MIT} or LICENSE.txt).
+<span class='line'> 13</span>  */</span><span class="WHIT">
+<span class='line'> 14</span> </span><span class="COMM">/**
+<span class='line'> 15</span>  * @classdesc
+<span class='line'> 16</span>  * CNum is a javascript object holding the value of a complex number z (set by
+<span class='line'> 17</span>  * an algebraic expression in text form) that can be used to display the complex 
+<span class='line'> 18</span>  * number as a string
+<span class='line'> 19</span>  * in different bases or to plot a vector-like diagram of z in the complex plane.
+<span class='line'> 20</span>  * Graphics are drawn onto a html5 canvas - this should nowadays be supported 
+<span class='line'> 21</span>  * by most browsers.
+<span class='line'> 22</span>  *
+<span class='line'> 23</span>  * I wrote the code because I needed a dynamic Argand diagram in webpages
+<span class='line'> 24</span>  * for a a basic maths lecture. It serves a purpose and is far from
+<span class='line'> 25</span>  * being cleanly written, nicely formatted or similar. If you like it, use it, If you don't
+<span class='line'> 26</span>  * - guess what :-)
+<span class='line'> 27</span>  * 
+<span class='line'> 28</span>  * @class Constructor for a CNum - the complex value is set via an algebraic expression.
+<span class='line'> 29</span>  * usage: object = new CNum( expression ) creates a new complex number, e.g.
+<span class='line'> 30</span>  *        z = new CNum("2+i");
+<span class='line'> 31</span>  * 
+<span class='line'> 32</span>  * CNum.js uses some external libraries:
+<span class='line'> 33</span>  *
+<span class='line'> 34</span>  * - jquery: {@link http://jquery.org}
+<span class='line'> 35</span>  * - jcanvas: {@link http://calebevans.me/projects/jcanvas/} (drawing routines)
+<span class='line'> 36</span>  * - mathjs: {@link http://mathjs.org} (that can do much more!)
 <span class='line'> 37</span>  * @param {string} expr - a text representing a complex number (parsed by mathjs, e.g. '2+3i', '12*exp(3i)')
 <span class='line'> 38</span> */</span><span class="WHIT">
 <span class='line'> 39</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">CNum</span><span class="PUNC">(</span><span class="NAME">expr</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
@@ -399,4 +399,5 @@
 <span class='line'>392</span> </span><span class="WHIT">        </span><span class="COMM">// return a brandnew CNum :-)</span><span class="WHIT">
 <span class='line'>393</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>394</span> 
-<span class='line'>395</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">// -- CNum --</span></pre></body></html>
+<span class='line'>395</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">// -- CNum --</span><span class="WHIT">
+<span class='line'>396</span> </span></pre></body></html>
