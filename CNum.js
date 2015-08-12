@@ -3,40 +3,32 @@
 /** 
  *  @file CNum.js: sketch the complex plane in a html5 canvas
  *  @author Marcus Oettinger
- *  @license MIT (see {@link http://opensource.org/licenses/MIT} or LICENSE.txt).
  *  @version 0.3.1
- * @fileOverview CNum.js is a javascript class to display a complex number
- * in a gaussian plane (sometimes called an Argand-Plot) on a html5-canvas.
- * Furthermore, it is able to perform and display basic arithmetics
- * with an arbitrary complex number.
+ * @license MIT (see {@link http://opensource.org/licenses/MIT} or LICENSE.txt).
  */
-/** 
- * @class
- * <p>CNum is a javascript object holding the value of a complex number z
- * (set by an algebraic expression in text form) that can display the complex 
- * number as a string in different bases and plot a vector-like diagram of z
- * in the complex plane.
- * Graphics are drawn onto a html5 canvas - this should nowadays be supported 
- * by most browsers.</p>
- * <p>I wrote the code because I needed a dynamic Argand diagram in webpages
+/**
+ * @fileoverview 
+ * CNum.js is a javascript object to display a complex  number z as a string
+ * in different bases or to plot a vector-like diagram of z in the complex plane.
+ * The idea is to set a complex value via algebraic Expression  (not necessarily
+ * as a sum of real and imaginary part) and convert the complex number into
+ * different representations or a Gaussian plot (aka Argand
+ * diagram). Graphics are drawn onto a html5 canvas - this should nowadays
+ * be supported  by most browsers.<br><br>
+ * I wrote the code because I needed a dynamic Argand diagram in webpages
  * for a a basic maths lecture. It serves a purpose and is far from
- * being cleanly written, nicely formatted or similar. If you like it, use it,
- * If you don't * - guess what :-)</p>
- * <p>
- * CNum uses some external libraries:
- * <ul>
- * <li><a href="http://jquery.org">jquery</a></li>
- * <li><a href="http://calebevans.me/projects/jcanvas/">jcanvas</a> (drawing
- *     routines)</li>
- * <li><a href="http://mathjs.org">mathjs</a> (that can do much more!)</li>
- * </ul></p>
- * @description
- * <p>Constructor for a CNum - set the complex value via an algebraic
- * expression.</p>
- * <p>
+ * being cleanly written, nicely formatted or similar. If you like it, use it, If you don't
+ * - guess what :-)
+ * 
+ * @class Constructor for a CNum - the complex value is set via an algebraic expression.
  * usage: object = new CNum( expression ) creates a new complex number, e.g.
  *        z = new CNum("2+i");
- * </p>
+ * 
+ * CNum.js uses some external libraries:
+ *
+ * - jquery: {@link http://jquery.org}
+ * - jcanvas: {@link http://calebevans.me/projects/jcanvas/} (drawing routines)
+ * - mathjs: {@link http://mathjs.org} (that can do much more!)
  * @param {string} expr - a text representing a complex number (parsed by mathjs, e.g. '2+3i', '12*exp(3i)')
 */
 function CNum(expr) {
