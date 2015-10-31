@@ -1,35 +1,46 @@
-// M. Oettinger 04/2015, Marcus -at- oettinger-physics.de
+// M. Oettinger, Marcus -at- oettinger-physics.de
+// Sa 31. Okt 17:22:27 CET 2015
+//  revamped jsdoc content
+// So 25. Okt 07:53:32 CET 2015
 //
 /** 
  *  @file CNum.js: sketch the complex plane in a html5 canvas
  *  @author Marcus Oettinger
  *  @version 0.3.1
- * @license MIT (see {@link http://opensource.org/licenses/MIT} or LICENSE.txt).
+ *  @license MIT (see {@link http://opensource.org/licenses/MIT} or LICENSE).
  */
 /**
- * @fileoverview 
- * CNum.js is a javascript object to display a complex  number z as a string
- * in different bases or to plot a vector-like diagram of z in the complex plane.
- * The idea is to set a complex value via algebraic Expression  (not necessarily
- * as a sum of real and imaginary part) and convert the complex number into
- * different representations or a Gaussian plot (aka Argand
- * diagram). Graphics are drawn onto a html5 canvas - this should nowadays
+ * @class CNum.js
+ * is a javascript object plotting a representation of a number z in the complex
+ * plane. The idea is to set a complex value via an algebraic expression, 
+ * transform it into different bases and draw a Gaussian plot (aka Argand
+ * diagram).
+ * Here's a <a href="https://MarcusOettinger.github.io/CNum.js/">demo page</a>.<br>
+ * License: <a href="http://opensource.org/licenses/MIT">The MIT License</a>.<br>
+ * <br><br>
+ * Graphics are drawn onto a html5 canvas - this should nowadays
  * be supported  by most browsers.<br><br>
- * I wrote the code because I needed a dynamic Argand diagram in webpages
- * for a a basic maths lecture. It serves a purpose and is far from
- * being cleanly written, nicely formatted or similar. If you like it, use it, If you don't
- * - guess what :-)
+ * I wrote the code because I needed a dynamic plot of complex values in
+ * webpages for a a basic maths lecture. It serves a purpose and is far from
+ * being cleanly written, nicely formatted or similar.
  * 
- * @class Constructor for a CNum - the complex value is set via an algebraic expression.
- * usage: object = new CNum( expression ) creates a new complex number, e.g.
- *        z = new CNum("2+i");
- * 
+ * <br><br>
  * CNum.js uses some external libraries:
- *
- * - jquery: {@link http://jquery.org}
- * - jcanvas: {@link http://calebevans.me/projects/jcanvas/} (drawing routines)
- * - mathjs: {@link http://mathjs.org} (that can do much more!)
- * @param {string} expr - a text representing a complex number (parsed by mathjs, e.g. '2+3i', '12*exp(3i)')
+ * <ul>
+ * <li>jquery: [jquery]{http://jquery.org}</li>
+ * <li>jcanvas: 
+ * {@link http://calebevans.me/projects/jcanvas/ jcanvas}
+ * (drawing routines)</li>
+ * <li>mathjs: {@link http://mathjs.org mathjs} (that can do much more!)</li>
+ * </ul>
+ * Creates a CNum object - the complex value is set via an algebraic expression.
+ * <br><br>
+ * Usage is simple: object = new CNum( expression ) creates a new complex
+ * number,<br>
+ * e.g. <b><i> z = new CNum("2+i"); </i></b> &nbsp;&nbsp;
+ * will create <b><i>z</i></b> with the value <b><i>2+i</i></b><br>.
+ * @param {string} expr a text representing a complex number. Cartesian, trigonometric and polar expressions can be used, e.g. '2+3i' or '12*exp(3i)'
+ * <br><br>
 */
 function CNum(expr) {
         // Private:
@@ -49,6 +60,25 @@ function CNum(expr) {
         var _TICKSCALE= 0.001;
 
         // default options - values are settable for every number displayed
+	/**
+	 * Options used to change the appearance of a plot. This set of options
+	 * is used in all methods displaying numbers.
+	 * @name options
+	 * @memberOf CNum
+	 * @function
+         * @param {Object} options
+         * @param {boolean} options.clear - remove canvas contents before drawing
+         * @param {boolean} options.coords - draw a coordinate system
+	 * @param {boolean} options.Arrow draw <i><b>z</b></i> as an arrow - if set to false, draw a point. Defaults to true.
+	 * @param {boolean} options.circle draw a circle with radius <i><b>|z|</b></i>. Defaults to false.
+	 * @param {boolean} options.ReIm show real and imaginary part in the plot. Default is true.
+	 * @param {boolean} options.Ctext print <i><b>z</b></i> in cartesian notation. Defaults to true
+	 * @param {boolean} options.arc show angle and value as an arc. Default is true.
+	 * @param {string} options.color set a color to use for arrow, text, angle. Defaults to '#888'.
+	 * @param {boolean} options.colarrow draw arrow and text in the selected color (default is black).
+
+	 */
+
         var _defaults = { 
             		// general plot options
             		clear: false, 		// clear canvas
@@ -204,7 +234,8 @@ function CNum(expr) {
         }; // drawAngle
 
 
-        // draw a circle with radius |z| (to clarify the picture of rotating pointers)
+        // draw a circle with radius |z| 
+	// (to clarify the picture of rotating pointers in the complex plane)
         function circ() {
                 if (_daCanvas == null) return;
                 _daCanvas.drawArc({ draggable: false, strokeStyle: '#999', strokeWidth: 1, 
@@ -217,13 +248,16 @@ function CNum(expr) {
         // Public:
         // =======================================================
         // return radius of the complex cartesian x+iy in gaussian plane
+	/** Return radius of the pointer
+	 * @return {float} radius of the complex number (norm)
+	 */
         this.getradius = function() { return _radius;  };
 
 
         // Return complex number z in cartesian coordinates as html string.
         //
-        /** HTML of the complex number z in cartesian representation (e.g. '1+2i')
-         *  @return a string containing a complex number in its simplest form.
+        /** Return a string of the complex number z in cartesian representation (e.g. '1+2i')
+         *  @return {string} a string containing the simplest form of the complex number <b><i>z = x + i&middot;y</i></b>
          */
         this.ToCartesian = function() {
                 retval = this.zNum.format(3);
@@ -232,8 +266,8 @@ function CNum(expr) {
 
         // Return complex conjugate as html.
         //
-        /** HTML of the complex conjugate z* in cartesian representation (e.g. '1-2i')
-         *  @return a string containing a complex conjugate.
+        /** Return a string of the complex conjugate z* in cartesian representation (e.g. '1-2i')
+         *  @return {string} <b><i>z&#773;</i></b>, a  string containing the complex conjugate of <b><i>z</i></b>.
          */
         this.ToCC = function() {
                 retval = math.conj(this.zNum).format(3);
@@ -243,8 +277,8 @@ function CNum(expr) {
  
         // Return norm as html.
         //
-        /** HTML of the norm (length of the vector) of the complex number z (e.g. '2.236')
-         *  @return a string containing a real number.
+        /** Return a string of the norm (length of the vector) of the complex number z (e.g. '2.236')
+         *  @return {string} a string containing the norm as a real number.
          */
         this.ToR = function() {
                 retval = math.round(this.zNum.toPolar().r,3);
@@ -253,8 +287,8 @@ function CNum(expr) {
 
         // Return complex number z in trigonometric representation as html.
         //
-        /** HTML of the complex number z in trigonometric representation (e.g. '2.236(cos(1.107) + i &middot; sin(1.107))')
-         *  @return a string containing a complex number as a mathematical expression.
+        /** Return a string of the complex number z in trigonometric representation (e.g. '2.236(cos(1.107) + i &middot; sin(1.107))')
+         *  @return {string} a string containing the complex number as a mathematical expression in trigonometric notation.
          */
         this.ToTrigonometric = function() {
                 rad = math.round(this.zNum.toPolar().r,3);
@@ -265,8 +299,8 @@ function CNum(expr) {
 
         // Return complex number z in polar coordinates as html.
         //
-        /** HTML of the complex number z in polar representation (e.g. '2.236 e<sup>i 1.107</sup>'')
-         *  @return a string containing a complex number in polar coordinates.
+        /** Return a string of the complex number z in polar representation (e.g. '2.236 e<sup>i 1.107</sup>')
+         *  @return {string} a string containing the number <b><i>z</i></b> in polar coordinates with a bit of html for the superscripts.
          */
         this.ToPolar = function() {
                 rad = math.round(this.zNum.toPolar().r,3);
@@ -278,7 +312,8 @@ function CNum(expr) {
         // the good stuff: Graphics
         // -----------------------------------------------------------------------------
         /** Set the canvas to plot on
-         * @param {canvas object} cnv - the html canvas to draw on (conveniently selected via jquery).
+         * @param {canvas object} cnv - the html canvas to draw on
+	 * (conveniently selected via jquery).
          */
         this.setCanvas = function( cnv ) {  _daCanvas = cnv; };
 
@@ -288,6 +323,12 @@ function CNum(expr) {
 
 
         // add product of zs to plot - add to existing plot
+	/** multiply two complex numbers in a Gaussian plot.
+	 * @param {CNum} z2: the number to multiply with
+	 * @param {options} options set appearance of the complex number to add (see {@link CNum.options} for a list of possible settings)
+	 * @param {options} resultoptions change appearance of the resulting complex number (see {@link CNum.options} for a list of possible settings)
+	 * @return {CNum} result of the operation as a CNum
+	 */
         this.multiplyCNum =function(z2, options, resultoptions){
             resultoptions = ( typeof resultoptions == 'undefined' ? options : resultoptions);
 
@@ -303,6 +344,12 @@ function CNum(expr) {
 
 
         // add sum of zs to plot - add to existing plot
+	/** show the sum of two complex numbers in a Gaussian plot.
+	 * @param {CNum} z2: the number to add
+	 * @param {options} options set appearance of the complex number to add (see {@link CNum.options} for a list of possible settings)
+	 * @param {options} resultoptions change appearance of the resulting complex number (see {@link CNum.options} for a list of possible settings)
+	 * @return {CNum} result of the operation as a CNum
+	 */
         this.addCNum =function(_zToAdd, options, resultoptions){
             resultoptions = ( typeof resultoptions == 'undefined' ? options : resultoptions);
 
@@ -317,14 +364,11 @@ function CNum(expr) {
         }
         
 
-        /** add a CNum to an existing plot - may be used to plot several numbers an the same canvas at the same time.
-        * Caveat: the plot will not be rescaled nor cleared (of course).
-        * @param {boolean} clear (ignored)
-        * @param {boolean} coords (ignored)
-        * @param {boolean} circle (ignored)
-        * @param {boolean} ReIm - Show real and imaginary parts by thin vertical/horizontal lines in color (see below, default: true)
-        * @param {string} color - a color in html notation (default "#888")
-        * @param {boolean} colarrow - draw arrow in color if set (default: black arrow)
+        /** add a CNum to an existing plot - may be used to plot several
+	 *numbers on one canvas at the same time.
+         * Caveat: the plot will not be rescaled nor cleared (of course).
+         * @param {CNum} z the complex number to add to the current plot
+	 * @param {options} options change plot appearance (see {@link CNum.options} for a list of possible settings)
         */
         this.addToPlot = function( z, options ) {
                 // handle defaults
@@ -337,18 +381,15 @@ function CNum(expr) {
                 _count++;
         }; // addToPlot
 
-        /** add a CNum as a free vector to an existing plot - may be used to plot several numbers an the same canvas at the same time. This method plots a CNum starting at a certain point (instead of 0/0), for example to display sums of complex numbers.
+        /** add a CNum as a free vector to an existing plot - used to plot
+	* several numbers on a single canvas. This method plots a CNum starting
+	* at a point (x/y), for example to display sums of complex numbers.
         * Caveat: the plot will not be rescaled nor cleared (of course).
         * @param {CNum} z - the complex number to add
         * @param {coordinate} x,y coordinates of the starting point
-        * @param {boolean} clear (ignored)
-        * @param {boolean} coords (ignored)
-        * @param {boolean} circle (ignored)
-        * @param {boolean} ReIm - Show real and imaginary parts by thin vertical/horizontal lines in color (see below, default: true)
-        * @param {string} color - a color in html notation (default "#888")
-        * @param {boolean} colarrow - draw arrow in color if set (default: black arrow)
+	* @param {options} 
+	* change plot appearance (see {@link CNum.options} for a list of possible settings)
         */
-
         this.addVector = function( z, x, y, options ) {
                 var settings = $.extend( {}, _defaults, options );
                 if (settings.arc) drawAngle(z.angle, settings);
@@ -361,18 +402,15 @@ function CNum(expr) {
 
         // * clear canvas and draw 
         // 
-        /** Draw the complex number z as an arrow in the complex plane on the canvas set by
-         *@see setCanvas. This function should be used to either plot a single CNum or to plot
-         *the first in a series of CNums onto the same canvas. Additional numbers can be displayed
-         * on a canvas using
-         * @see addToPlot
-         * @param {boolean} clear - Clear canvas before displaying complex number if set (default: true)
-         * @param {boolean} coords - Draw a cartesian coordinate system if set (default: true)
-         * @param {boolean} circle - Draw a circle with radius |z| (this is poor man's rotating pointer, default: true)
-         * @param {boolean} ReIm - Show real and imaginary parts by thin vertical/horizontal lines in color (see below, default: true)
-        * @param {boolean} color - a color in html notation (default "#888")
-        * @param {boolean} colarrow - draw arrow in color if set (default: black arrow)
+        /** Draw the complex number z as an arrow in the complex plane on the
+	 * selected canvas (set by setCanvas()).
+	 * This method either plots a single CNum or the first one in a series
+	 * of CNums drawn onto the same canvas. Additional numbers can be
+	 * displayed on that canvas using addToPlot
+	 * @param {options} options change plot appearance (see {@link CNum.options} for a list of possible settings)
         * @param {optional number} radius scale the plot for a complex number of this value (default: autoscale)
+         *@see setCanvas(): Set the canvas to draw on.
+         *@see addToPlot(): draw another number into an existing plot.
         */
         this.displayGauss = function(options, radius){
                 // handle defaults

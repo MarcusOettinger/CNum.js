@@ -1,247 +1,360 @@
-[Class Index](../index.html) | [File Index](../files.html)
 
-* * * * *
+#  Class CNum
 
-Classes
--------
+CNum.js is a javascript object plotting a representation of a number z in the
+complex plane. The idea is to set a complex value via an algebraic expression,
+transform it into different bases and draw a Gaussian plot (aka Argand
+diagram). Here's a [demo page](https://MarcusOettinger.github.io/CNum.js/).  
+License: [The MIT License](http://opensource.org/licenses/MIT).  
+  
+  
+Graphics are drawn onto a html5 canvas - this should nowadays be supported by
+most browsers.  
+  
+I wrote the code because I needed a dynamic plot of complex values in webpages
+for a a basic maths lecture. It serves a purpose and is far from being cleanly
+written, nicely formatted or similar.  
+  
+CNum.js uses some external libraries:
 
--   *[\_global\_](../symbols/_global_.html)*
--   [CNum](../symbols/CNum.html)
+  * jquery: [jquery]{http://jquery.org}
+  * jcanvas: {@link http://calebevans.me/projects/jcanvas/ jcanvas} (drawing routines)
+  * mathjs: {@link http://mathjs.org mathjs} (that can do much more!)
+Creates a CNum object - the complex value is set via an algebraic expression.  
+  
+Usage is simple: object = new CNum( expression ) creates a new complex number,  
+e.g. **_ z = new CNum("2+i"); _**    will create **_z_** with the value
+**_2+i_**  
+.  
+_Defined in: _ [CNum.js](../symbols/src/CNum.js.html).
 
-* * * * *
+Class Summary Constructor Attributes | Constructor Name and Description  
+---|---  
+  |
 
-Class CNum
-==========
+**[CNum](../symbols/CNum.html#constructor)**(expr)   
+  
+Method Summary Method Attributes | Method Name and Description  
+---|---  
+  |
 
-*Defined in:* [CNum.js](../symbols/src/CNum.js.html).
+**[addCNum](../symbols/CNum.html#addCNum)**(z2:, options, resultoptions) 
 
-Class Summary
+show the sum of two complex numbers in a Gaussian plot.  
+  
+  |
 
-Constructor Attributes
+**[addToPlot](../symbols/CNum.html#addToPlot)**(z, options) 
 
-Constructor Name and Description
+add a CNum to an existing plot - may be used to plot several numbers on one
+canvas at the same time.  
+  
+  |
 
- 
+**[addVector](../symbols/CNum.html#addVector)**(z, x,y, change, options) 
 
-**[CNum](../symbols/CNum.html#constructor)**(expr)
+add a CNum as a free vector to an existing plot - used to plot several numbers
+on a single canvas.  
+  
+  |
 
-Constructor for a CNum - the complex value is set via an algebraic expression.
+**[displayGauss](../symbols/CNum.html#displayGauss)**(options, radius) 
 
-Method Summary
+Draw the complex number z as an arrow in the complex plane on the selected
+canvas (set by setCanvas()).  
+  
+  |
 
-Method Attributes
+**[getradius](../symbols/CNum.html#getradius)**() 
 
-Method Name and Description
+Return radius of the pointer  
+  
+  |
 
- 
+**[multiplyCNum](../symbols/CNum.html#multiplyCNum)**(z2:, options, resultoptions) 
 
-**[addToPlot](../symbols/CNum.html#addToPlot)**(clear, coords, circle, ReIm, color, colarrow)
+multiply two complex numbers in a Gaussian plot.  
+  
+&lt;static&gt;   |
 
-add a CNum to an existing plot - may be used to plot several numbers an the same canvas at the same time.
+CNum.**[options](../symbols/CNum.html#.options)**(options)
 
- 
+Options used to change the appearance of a plot.  
+  
+  |
 
-**[addVector](../symbols/CNum.html#addVector)**(z, x,y, clear, coords, circle, ReIm, color, colarrow)
+**[setCanvas](../symbols/CNum.html#setCanvas)**(cnv) 
 
-add a CNum as a free vector to an existing plot - may be used to plot several numbers an the same canvas at the same time.
+Set the canvas to plot on  
+  
+  |
 
- 
+**[ToCartesian](../symbols/CNum.html#ToCartesian)**() 
 
-**[displayGauss](../symbols/CNum.html#displayGauss)**(clear, coords, circle, ReIm, color, colarrow, radius)
+Return a string of the complex number z in cartesian representation (e.g.  
+  
+  |
 
-Draw the complex number z as an arrow in the complex plane on the canvas set by
+**[ToCC](../symbols/CNum.html#ToCC)**() 
 
- 
+Return a string of the complex conjugate z* in cartesian representation (e.g.  
+  
+  |
 
-**[setCanvas](../symbols/CNum.html#setCanvas)**(cnv)
+**[ToPolar](../symbols/CNum.html#ToPolar)**() 
 
-Set the canvas to plot on
+Return a string of the complex number z in polar representation (e.g.  
+  
+  |
 
- 
+**[ToR](../symbols/CNum.html#ToR)**() 
 
-**[ToCartesian](../symbols/CNum.html#ToCartesian)**()
+Return a string of the norm (length of the vector) of the complex number z
+(e.g.  
+  
+  |
 
-HTML of the complex number z in cartesian representation (e.g.
+**[ToTrigonometric](../symbols/CNum.html#ToTrigonometric)**() 
 
- 
-
-**[ToCC](../symbols/CNum.html#ToCC)**()
-
-HTML of the complex conjugate z\* in cartesian representation (e.g.
-
- 
-
-**[ToPolar](../symbols/CNum.html#ToPolar)**()
-
-HTML of the complex number z in polar representation (e.g.
-
- 
-
-**[ToR](../symbols/CNum.html#ToR)**()
-
-HTML of the norm (length of the vector) of the complex number z (e.g.
-
- 
-
-**[ToTrigonometric](../symbols/CNum.html#ToTrigonometric)**()
-
-HTML of the complex number z in trigonometric representation (e.g.
-
+Return a string of the complex number z in trigonometric representation (e.g.  
+  
 Class Detail
 
-**CNum**(expr)
-
-Constructor for a CNum - the complex value is set via an algebraic expression.usage: object = new CNum( expression ) creates a new complex number, e.g. z = new CNum("2+i");
+**CNum**(expr) 
 
 Parameters:
- {string} **expr**   
-- a text representing a complex number (parsed by mathjs, e.g. '2+3i', '12\*exp(3i)')
+
+{string} **expr**
+
+    a text representing a complex number. Cartesian, trigonometric and polar expressions can be used, e.g. '2+3i' or '12*exp(3i)'   
+  
 
 Method Detail
 
-**addToPlot**(clear, coords, circle, ReIm, color, colarrow)
+{[CNum](../symbols/CNum.html)} **addCNum**(z2:, options, resultoptions)
 
-add a CNum to an existing plot - may be used to plot several numbers an the same canvas at the same time.Caveat: the plot will not be rescaled nor cleared (of course).
-
-Parameters:
- {boolean} **clear**   
-(ignored)
-
- {boolean} **coords**   
-(ignored)
-
- {boolean} **circle**   
-(ignored)
-
- {boolean} **ReIm**   
-- Show real and imaginary parts by thin vertical/horizontal lines in color (see below, default: true)
-
- {string} **color**   
-- a color in html notation (default "\#888")
-
- {boolean} **colarrow**   
-- draw arrow in color if set (default: black arrow)
-
-* * * * *
-
-**addVector**(z, x,y, clear, coords, circle, ReIm, color, colarrow)
-
-add a CNum as a free vector to an existing plot - may be used to plot several numbers an the same canvas at the same time. This method plots a CNum starting at a certain point (instead of 0/0), for example to display sums of complex numbers.Caveat: the plot will not be rescaled nor cleared (of course).
+show the sum of two complex numbers in a Gaussian plot.
 
 Parameters:
- {[CNum](../symbols/CNum.html)} **z**   
-- the complex number to add
 
- {coordinate} **x,y**   
-coordinates of the starting point
+{[CNum](../symbols/CNum.html)} **z2:**
 
- {boolean} **clear**   
-(ignored)
+    the number to add
+{options} **options**
 
- {boolean} **coords**   
-(ignored)
+    set appearance of the complex number to add (see [CNum.options](../symbols/CNum.html#.options) for a list of possible settings)
+{options} **resultoptions**
 
- {boolean} **circle**   
-(ignored)
+    change appearance of the resulting complex number (see [CNum.options](../symbols/CNum.html#.options) for a list of possible settings)
 
- {boolean} **ReIm**   
-- Show real and imaginary parts by thin vertical/horizontal lines in color (see below, default: true)
+Returns:
 
- {string} **color**   
-- a color in html notation (default "\#888")
+    {[CNum](../symbols/CNum.html)} result of the operation as a CNum
 
- {boolean} **colarrow**   
-- draw arrow in color if set (default: black arrow)
+* * *
 
-* * * * *
+**addToPlot**(z, options) 
 
-**displayGauss**(clear, coords, circle, ReIm, color, colarrow, radius)
-
-Draw the complex number z as an arrow in the complex plane on the canvas set by
+add a CNum to an existing plot - may be used to plot several numbers on one
+canvas at the same time. Caveat: the plot will not be rescaled nor cleared (of
+course).
 
 Parameters:
- {boolean} **clear**   
-- Clear canvas before displaying complex number if set (default: true)
 
- {boolean} **coords**   
-- Draw a cartesian coordinate system if set (default: true)
+{[CNum](../symbols/CNum.html)} **z**
 
- {boolean} **circle**   
-- Draw a circle with radius |z| (this is poor man's rotating pointer, default: true)
+    the complex number to add to the current plot
+{options} **options**
 
- {boolean} **ReIm**   
-- Show real and imaginary parts by thin vertical/horizontal lines in color (see below, default: true)
+    change plot appearance (see [CNum.options](../symbols/CNum.html#.options) for a list of possible settings)
 
- {boolean} **color**   
-- a color in html notation (default "\#888")
+* * *
 
- {boolean} **colarrow**   
-- draw arrow in color if set (default: black arrow)
+**addVector**(z, x,y, change, options) 
 
- {optional number} **radius**   
-scale the plot for a complex number of this value (default: autoscale)
+add a CNum as a free vector to an existing plot - used to plot several numbers
+on a single canvas. This method plots a CNum starting at a point (x/y), for
+example to display sums of complex numbers. Caveat: the plot will not be
+rescaled nor cleared (of course).
 
-See:  
-setCanvas. This function should be used to either plot a single CNum or to plotthe first in a series of CNums onto the same canvas. Additional numbers can be displayedon a canvas using
+Parameters:
 
-addToPlot
+{[CNum](../symbols/CNum.html)} **z**
 
-* * * * *
+    \- the complex number to add
+{coordinate} **x,y**
 
-**setCanvas**(cnv)
+    coordinates of the starting point
+{options} **change**
+
+    plot appearance (see [CNum.options](../symbols/CNum.html#.options) for a list of possible settings)
+**options**
+    
+
+* * *
+
+**displayGauss**(options, radius) 
+
+Draw the complex number z as an arrow in the complex plane on the selected
+canvas (set by setCanvas()). This method either plots a single CNum or the
+first one in a series of CNums drawn onto the same canvas. Additional numbers
+can be displayed on that canvas using addToPlot
+
+Parameters:
+
+{options} **options**
+
+    change plot appearance (see [CNum.options](../symbols/CNum.html#.options) for a list of possible settings)
+{optional number} **radius**
+
+    scale the plot for a complex number of this value (default: autoscale)
+
+See:
+
+    setCanvas(): Set the canvas to draw on.
+    addToPlot(): draw another number into an existing plot.
+
+* * *
+
+{float} **getradius**()
+
+Return radius of the pointer
+
+Returns:
+
+    {float} radius of the complex number (norm)
+
+* * *
+
+{[CNum](../symbols/CNum.html)} **multiplyCNum**(z2:, options, resultoptions)
+
+multiply two complex numbers in a Gaussian plot.
+
+Parameters:
+
+{[CNum](../symbols/CNum.html)} **z2:**
+
+    the number to multiply with
+{options} **options**
+
+    set appearance of the complex number to add (see [CNum.options](../symbols/CNum.html#.options) for a list of possible settings)
+{options} **resultoptions**
+
+    change appearance of the resulting complex number (see [CNum.options](../symbols/CNum.html#.options) for a list of possible settings)
+
+Returns:
+
+    {[CNum](../symbols/CNum.html)} result of the operation as a CNum
+
+* * *
+
+&lt;static&gt; CNum.**options**(options)
+
+Options used to change the appearance of a plot. This set of options is used
+in all methods displaying numbers.
+
+Parameters:
+
+{Object} **options**
+
+    
+{boolean} **options.clear**
+
+    \- remove canvas contents before drawing
+{boolean} **options.coords**
+
+    \- draw a coordinate system
+{boolean} **options.Arrow**
+
+    draw _**z**_ as an arrow - if set to false, draw a point. Defaults to true.
+{boolean} **options.circle**
+
+    draw a circle with radius _**|z|**_. Defaults to false.
+{boolean} **options.ReIm**
+
+    show real and imaginary part in the plot. Default is true.
+{boolean} **options.Ctext**
+
+    print _**z**_ in cartesian notation. Defaults to true
+{boolean} **options.arc**
+
+    show angle and value as an arc. Default is true.
+{string} **options.color**
+
+    set a color to use for arrow, text, angle. Defaults to '#888'.
+{boolean} **options.colarrow**
+
+    draw arrow and text in the selected color (default is black).
+
+* * *
+
+**setCanvas**(cnv) 
 
 Set the canvas to plot on
 
 Parameters:
- {canvas object} **cnv**   
-- the html canvas to draw on (conveniently selected via jquery).
 
-* * * * *
+{canvas object} **cnv**
 
-**ToCartesian**()
+    \- the html canvas to draw on (conveniently selected via jquery).
 
-HTML of the complex number z in cartesian representation (e.g. '1+2i')
+* * *
 
-Returns:  
-a string containing a complex number in its simplest form.
+{string} **ToCartesian**()
 
-* * * * *
+Return a string of the complex number z in cartesian representation (e.g.
+'1+2i')
 
-**ToCC**()
+Returns:
 
-HTML of the complex conjugate z\* in cartesian representation (e.g. '1-2i')
+    {string} a string containing the simplest form of the complex number **_z = x + i*y_**
 
-Returns:  
-a string containing a complex conjugate.
+* * *
 
-* * * * *
+{string} **ToCC**()
 
-**ToPolar**()
+Return a string of the complex conjugate z* in cartesian representation (e.g.
+'1-2i')
 
-HTML of the complex number z in polar representation (e.g. '2.236 e<sup>i\\ 1.107</sup>'')
+Returns:
 
-Returns:  
-a string containing a complex number in polar coordinates.
+    {string} **_z̅_**, a string containing the complex conjugate of **_z_**.
 
-* * * * *
+* * *
 
-**ToR**()
+{string} **ToPolar**()
 
-HTML of the norm (length of the vector) of the complex number z (e.g. '2.236')
+Return a string of the complex number z in polar representation (e.g. '2.236
+ei 1.107')
 
-Returns:  
-a string containing a real number.
+Returns:
 
-* * * * *
+    {string} a string containing the number **_z_** in polar coordinates with a bit of html for the superscripts.
 
-**ToTrigonometric**()
+* * *
 
-HTML of the complex number z in trigonometric representation (e.g. '2.236(cos(1.107) + i · sin(1.107))')
+{string} **ToR**()
 
-Returns:  
-a string containing a complex number as a mathematical expression.
+Return a string of the norm (length of the vector) of the complex number z
+(e.g. '2.236')
 
-* * * * *
+Returns:
 
-Documentation generated by [JsDoc Toolkit](http://code.google.com/p/jsdoc-toolkit/) 2.4.0 on Fri Mar 27 2015 22:53:06 GMT+0100 (MEZ)
+    {string} a string containing the norm as a real number.
+
+* * *
+
+{string} **ToTrigonometric**()
+
+Return a string of the complex number z in trigonometric representation (e.g.
+'2.236(cos(1.107) + i * sin(1.107))')
+
+Returns:
+
+    {string} a string containing the complex number as a mathematical expression in trigonometric notation.
+
+* * *
+
+Documentation generated by [JsDoc Toolkit](http://code.google.com/p/jsdoc-
+toolkit/) 2.4.0 on Sat Oct 31 2015 17:34:13 GMT+0100 (MEZ)
 

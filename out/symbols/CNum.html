@@ -210,7 +210,7 @@ ul.inheritsList
 				
 				
 			
-				<p>CNum is a javascript object holding the value of a complex number z(set by an algebraic expression in text form) that can display the complex number as a string in different bases and plot a vector-like diagram of zin the complex plane.Graphics are drawn onto a html5 canvas - this should nowadays be supported by most browsers.</p><p>I wrote the code because I needed a dynamic Argand diagram in webpagesfor a a basic maths lecture. It serves a purpose and is far frombeing cleanly written, nicely formatted or similar. If you like it, use it,If you don't * - guess what :-)</p><p>CNum uses some external libraries:<ul><li><a href="http://jquery.org">jquery</a></li><li><a href="http://calebevans.me/projects/jcanvas/">jcanvas</a> (drawing    routines)</li><li><a href="http://mathjs.org">mathjs</a> (that can do much more!)</li></ul></p>
+				CNum.jsis a javascript object plotting a representation of a number z in the complexplane. The idea is to set a complex value via an algebraic expression, transform it into different bases and draw a Gaussian plot (aka Arganddiagram).Here's a <a href="https://MarcusOettinger.github.io/CNum.js/">demo page</a>.<br>License: <a href="http://opensource.org/licenses/MIT">The MIT License</a>.<br><br><br>Graphics are drawn onto a html5 canvas - this should nowadaysbe supported  by most browsers.<br><br>I wrote the code because I needed a dynamic plot of complex values inwebpages for a a basic maths lecture. It serves a purpose and is far frombeing cleanly written, nicely formatted or similar.<br><br>CNum.js uses some external libraries:<ul><li>jquery: [jquery]{http://jquery.org}</li><li>jcanvas: {@link http://calebevans.me/projects/jcanvas/ jcanvas}(drawing routines)</li><li>mathjs: {@link http://mathjs.org mathjs} (that can do much more!)</li></ul>Creates a CNum object - the complex value is set via an algebraic expression.<br><br>Usage is simple: object = new CNum( expression ) creates a new complexnumber,<br>e.g. <b><i> z = new CNum("2+i"); </i></b> &nbsp;&nbsp;will create <b><i>z</i></b> with the value <b><i>2+i</i></b><br>.
 				
 				
 					<br /><i>Defined in: </i> <a href="../symbols/src/CNum.js.html">CNum.js</a>.
@@ -234,7 +234,7 @@ ul.inheritsList
 							<div class="fixedFont">
 								<b><a href="../symbols/CNum.html#constructor">CNum</a></b>(expr)
 							</div>
-							<div class="description"><p>Constructor for a CNum - set the complex value via an algebraicexpression.</div>
+							<div class="description"></div>
 						</td>
 					</tr>
 				</tbody>
@@ -261,27 +261,63 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/CNum.html#addToPlot">addToPlot</a></b>(clear, coords, circle, ReIm, color, colarrow)
+								<div class="fixedFont"><b><a href="../symbols/CNum.html#addCNum">addCNum</a></b>(z2:, options, resultoptions)
 								</div>
-								<div class="description">add a CNum to an existing plot - may be used to plot several numbers an the same canvas at the same time.</div>
+								<div class="description">show the sum of two complex numbers in a Gaussian plot.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/CNum.html#addVector">addVector</a></b>(z, x,y, clear, coords, circle, ReIm, color, colarrow)
+								<div class="fixedFont"><b><a href="../symbols/CNum.html#addToPlot">addToPlot</a></b>(z, options)
 								</div>
-								<div class="description">add a CNum as a free vector to an existing plot - may be used to plot several numbers an the same canvas at the same time.</div>
+								<div class="description">add a CNum to an existing plot - may be used to plot severalnumbers on one canvas at the same time.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/CNum.html#displayGauss">displayGauss</a></b>(clear, coords, circle, ReIm, color, colarrow, radius)
+								<div class="fixedFont"><b><a href="../symbols/CNum.html#addVector">addVector</a></b>(z, x,y, change, options)
 								</div>
-								<div class="description">Draw the complex number z as an arrow in the complex plane on the canvas set by</div>
+								<div class="description">add a CNum as a free vector to an existing plot - used to plotseveral numbers on a single canvas.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/CNum.html#displayGauss">displayGauss</a></b>(options, radius)
+								</div>
+								<div class="description">Draw the complex number z as an arrow in the complex plane on theselected canvas (set by setCanvas()).</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/CNum.html#getradius">getradius</a></b>()
+								</div>
+								<div class="description">Return radius of the pointer</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/CNum.html#multiplyCNum">multiplyCNum</a></b>(z2:, options, resultoptions)
+								</div>
+								<div class="description">multiply two complex numbers in a Gaussian plot.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">CNum.<b><a href="../symbols/CNum.html#.options">options</a></b>(options)
+								</div>
+								<div class="description">Options used to change the appearance of a plot.</div>
 							</td>
 						</tr>
 					
@@ -299,7 +335,7 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/CNum.html#ToCartesian">ToCartesian</a></b>()
 								</div>
-								<div class="description">HTML of the complex number z in cartesian representation (e.g.</div>
+								<div class="description">Return a string of the complex number z in cartesian representation (e.g.</div>
 							</td>
 						</tr>
 					
@@ -308,7 +344,7 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/CNum.html#ToCC">ToCC</a></b>()
 								</div>
-								<div class="description">HTML of the complex conjugate z* in cartesian representation (e.g.</div>
+								<div class="description">Return a string of the complex conjugate z* in cartesian representation (e.g.</div>
 							</td>
 						</tr>
 					
@@ -317,7 +353,7 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/CNum.html#ToPolar">ToPolar</a></b>()
 								</div>
-								<div class="description">HTML of the complex number z in polar representation (e.g.</div>
+								<div class="description">Return a string of the complex number z in polar representation (e.g.</div>
 							</td>
 						</tr>
 					
@@ -326,7 +362,7 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/CNum.html#ToR">ToR</a></b>()
 								</div>
-								<div class="description">HTML of the norm (length of the vector) of the complex number z (e.g.</div>
+								<div class="description">Return a string of the norm (length of the vector) of the complex number z (e.g.</div>
 							</td>
 						</tr>
 					
@@ -335,7 +371,7 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/CNum.html#ToTrigonometric">ToTrigonometric</a></b>()
 								</div>
-								<div class="description">HTML of the complex number z in trigonometric representation (e.g.</div>
+								<div class="description">Return a string of the complex number z in trigonometric representation (e.g.</div>
 							</td>
 						</tr>
 					
@@ -360,7 +396,7 @@ ul.inheritsList
 				</div>
 				
 				<div class="description">
-					<p>Constructor for a CNum - set the complex value via an algebraicexpression.</p><p>usage: object = new CNum( expression ) creates a new complex number, e.g.       z = new CNum("2+i");</p>
+					
 					
 				</div>
 				
@@ -375,7 +411,7 @@ ul.inheritsList
 								<span class="light fixedFont">{string}</span>  <b>expr</b>
 								
 							</dt>
-								<dd>- a text representing a complex number (parsed by mathjs, e.g. '2+3i', '12*exp(3i)')</dd>
+								<dd>a text representing a complex number. Cartesian, trigonometric and polar expressions can be used, e.g. '2+3i' or '12*exp(3i)'<br><br></dd>
 						
 						</dl>
 					
@@ -398,15 +434,15 @@ ul.inheritsList
 					Method Detail
 				</div>
 				
-					<a name="addToPlot"> </a>
+					<a name="addCNum"> </a>
 					<div class="fixedFont">
 					
-					
-					<b>addToPlot</b>(clear, coords, circle, ReIm, color, colarrow)
+					<span class="light">{<a href="../symbols/CNum.html">CNum</a>}</span>
+					<b>addCNum</b>(z2:, options, resultoptions)
 					
 					</div>
 					<div class="description">
-						add a CNum to an existing plot - may be used to plot several numbers an the same canvas at the same time.Caveat: the plot will not be rescaled nor cleared (of course).
+						show the sum of two complex numbers in a Gaussian plot.
 						
 						
 					</div>
@@ -418,40 +454,71 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{boolean}</span> <b>clear</b>
+									<span class="light fixedFont">{<a href="../symbols/CNum.html">CNum</a>}</span> <b>z2:</b>
 									
 								</dt>
-								<dd>(ignored)</dd>
+								<dd>the number to add</dd>
 							
 								<dt>
-									<span class="light fixedFont">{boolean}</span> <b>coords</b>
+									<span class="light fixedFont">{options}</span> <b>options</b>
 									
 								</dt>
-								<dd>(ignored)</dd>
+								<dd>set appearance of the complex number to add (see <a href="../symbols/CNum.html#.options">CNum.options</a> for a list of possible settings)</dd>
 							
 								<dt>
-									<span class="light fixedFont">{boolean}</span> <b>circle</b>
+									<span class="light fixedFont">{options}</span> <b>resultoptions</b>
 									
 								</dt>
-								<dd>(ignored)</dd>
+								<dd>change appearance of the resulting complex number (see <a href="../symbols/CNum.html#.options">CNum.options</a> for a list of possible settings)</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/CNum.html">CNum</a>}</span> result of the operation as a CNum</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="addToPlot"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>addToPlot</b>(z, options)
+					
+					</div>
+					<div class="description">
+						add a CNum to an existing plot - may be used to plot severalnumbers on one canvas at the same time.Caveat: the plot will not be rescaled nor cleared (of course).
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{boolean}</span> <b>ReIm</b>
+									<span class="light fixedFont">{<a href="../symbols/CNum.html">CNum</a>}</span> <b>z</b>
 									
 								</dt>
-								<dd>- Show real and imaginary parts by thin vertical/horizontal lines in color (see below, default: true)</dd>
+								<dd>the complex number to add to the current plot</dd>
 							
 								<dt>
-									<span class="light fixedFont">{string}</span> <b>color</b>
+									<span class="light fixedFont">{options}</span> <b>options</b>
 									
 								</dt>
-								<dd>- a color in html notation (default "#888")</dd>
-							
-								<dt>
-									<span class="light fixedFont">{boolean}</span> <b>colarrow</b>
-									
-								</dt>
-								<dd>- draw arrow in color if set (default: black arrow)</dd>
+								<dd>change plot appearance (see <a href="../symbols/CNum.html#.options">CNum.options</a> for a list of possible settings)</dd>
 							
 							</dl>
 						
@@ -468,11 +535,11 @@ ul.inheritsList
 					<div class="fixedFont">
 					
 					
-					<b>addVector</b>(z, x,y, clear, coords, circle, ReIm, color, colarrow)
+					<b>addVector</b>(z, x,y, change, options)
 					
 					</div>
 					<div class="description">
-						add a CNum as a free vector to an existing plot - may be used to plot several numbers an the same canvas at the same time. This method plots a CNum starting at a certain point (instead of 0/0), for example to display sums of complex numbers.Caveat: the plot will not be rescaled nor cleared (of course).
+						add a CNum as a free vector to an existing plot - used to plotseveral numbers on a single canvas. This method plots a CNum startingat a point (x/y), for example to display sums of complex numbers.Caveat: the plot will not be rescaled nor cleared (of course).
 						
 						
 					</div>
@@ -496,40 +563,16 @@ ul.inheritsList
 								<dd>coordinates of the starting point</dd>
 							
 								<dt>
-									<span class="light fixedFont">{boolean}</span> <b>clear</b>
+									<span class="light fixedFont">{options}</span> <b>change</b>
 									
 								</dt>
-								<dd>(ignored)</dd>
+								<dd>plot appearance (see <a href="../symbols/CNum.html#.options">CNum.options</a> for a list of possible settings)</dd>
 							
 								<dt>
-									<span class="light fixedFont">{boolean}</span> <b>coords</b>
+									<b>options</b>
 									
 								</dt>
-								<dd>(ignored)</dd>
-							
-								<dt>
-									<span class="light fixedFont">{boolean}</span> <b>circle</b>
-									
-								</dt>
-								<dd>(ignored)</dd>
-							
-								<dt>
-									<span class="light fixedFont">{boolean}</span> <b>ReIm</b>
-									
-								</dt>
-								<dd>- Show real and imaginary parts by thin vertical/horizontal lines in color (see below, default: true)</dd>
-							
-								<dt>
-									<span class="light fixedFont">{string}</span> <b>color</b>
-									
-								</dt>
-								<dd>- a color in html notation (default "#888")</dd>
-							
-								<dt>
-									<span class="light fixedFont">{boolean}</span> <b>colarrow</b>
-									
-								</dt>
-								<dd>- draw arrow in color if set (default: black arrow)</dd>
+								<dd></dd>
 							
 							</dl>
 						
@@ -546,11 +589,11 @@ ul.inheritsList
 					<div class="fixedFont">
 					
 					
-					<b>displayGauss</b>(clear, coords, circle, ReIm, color, colarrow, radius)
+					<b>displayGauss</b>(options, radius)
 					
 					</div>
 					<div class="description">
-						Draw the complex number z as an arrow in the complex plane on the canvas set by
+						Draw the complex number z as an arrow in the complex plane on theselected canvas (set by setCanvas()).This method either plots a single CNum or the first one in a seriesof CNums drawn onto the same canvas. Additional numbers can bedisplayed on that canvas using addToPlot
 						
 						
 					</div>
@@ -562,40 +605,10 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{boolean}</span> <b>clear</b>
+									<span class="light fixedFont">{options}</span> <b>options</b>
 									
 								</dt>
-								<dd>- Clear canvas before displaying complex number if set (default: true)</dd>
-							
-								<dt>
-									<span class="light fixedFont">{boolean}</span> <b>coords</b>
-									
-								</dt>
-								<dd>- Draw a cartesian coordinate system if set (default: true)</dd>
-							
-								<dt>
-									<span class="light fixedFont">{boolean}</span> <b>circle</b>
-									
-								</dt>
-								<dd>- Draw a circle with radius |z| (this is poor man's rotating pointer, default: true)</dd>
-							
-								<dt>
-									<span class="light fixedFont">{boolean}</span> <b>ReIm</b>
-									
-								</dt>
-								<dd>- Show real and imaginary parts by thin vertical/horizontal lines in color (see below, default: true)</dd>
-							
-								<dt>
-									<span class="light fixedFont">{boolean}</span> <b>color</b>
-									
-								</dt>
-								<dd>- a color in html notation (default "#888")</dd>
-							
-								<dt>
-									<span class="light fixedFont">{boolean}</span> <b>colarrow</b>
-									
-								</dt>
-								<dd>- draw arrow in color if set (default: black arrow)</dd>
+								<dd>change plot appearance (see <a href="../symbols/CNum.html#.options">CNum.options</a> for a list of possible settings)</dd>
 							
 								<dt>
 									<span class="light fixedFont">{optional number}</span> <b>radius</b>
@@ -614,11 +627,188 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">See:</dt>
 							
-								<dd>setCanvas. This function should be used to either plot a single CNum or to plotthe first in a series of CNums onto the same canvas. Additional numbers can be displayedon a canvas using</dd>
+								<dd>setCanvas(): Set the canvas to draw on.</dd>
 							
-								<dd>addToPlot</dd>
+								<dd>addToPlot(): draw another number into an existing plot.</dd>
 							
 							</dl>
+						
+
+					<hr />
+				
+					<a name="getradius"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{float}</span>
+					<b>getradius</b>()
+					
+					</div>
+					<div class="description">
+						Return radius of the pointer
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{float}</span> radius of the complex number (norm)</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="multiplyCNum"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/CNum.html">CNum</a>}</span>
+					<b>multiplyCNum</b>(z2:, options, resultoptions)
+					
+					</div>
+					<div class="description">
+						multiply two complex numbers in a Gaussian plot.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/CNum.html">CNum</a>}</span> <b>z2:</b>
+									
+								</dt>
+								<dd>the number to multiply with</dd>
+							
+								<dt>
+									<span class="light fixedFont">{options}</span> <b>options</b>
+									
+								</dt>
+								<dd>set appearance of the complex number to add (see <a href="../symbols/CNum.html#.options">CNum.options</a> for a list of possible settings)</dd>
+							
+								<dt>
+									<span class="light fixedFont">{options}</span> <b>resultoptions</b>
+									
+								</dt>
+								<dd>change appearance of the resulting complex number (see <a href="../symbols/CNum.html#.options">CNum.options</a> for a list of possible settings)</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/CNum.html">CNum</a>}</span> result of the operation as a CNum</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".options"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">CNum.</span><b>options</b>(options)
+					
+					</div>
+					<div class="description">
+						Options used to change the appearance of a plot. This set of optionsis used in all methods displaying numbers.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<span class="light fixedFont">{boolean}</span> <b>options.clear</b>
+									
+								</dt>
+								<dd>- remove canvas contents before drawing</dd>
+							
+								<dt>
+									<span class="light fixedFont">{boolean}</span> <b>options.coords</b>
+									
+								</dt>
+								<dd>- draw a coordinate system</dd>
+							
+								<dt>
+									<span class="light fixedFont">{boolean}</span> <b>options.Arrow</b>
+									
+								</dt>
+								<dd>draw <i><b>z</b></i> as an arrow - if set to false, draw a point. Defaults to true.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{boolean}</span> <b>options.circle</b>
+									
+								</dt>
+								<dd>draw a circle with radius <i><b>|z|</b></i>. Defaults to false.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{boolean}</span> <b>options.ReIm</b>
+									
+								</dt>
+								<dd>show real and imaginary part in the plot. Default is true.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{boolean}</span> <b>options.Ctext</b>
+									
+								</dt>
+								<dd>print <i><b>z</b></i> in cartesian notation. Defaults to true</dd>
+							
+								<dt>
+									<span class="light fixedFont">{boolean}</span> <b>options.arc</b>
+									
+								</dt>
+								<dd>show angle and value as an arc. Default is true.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{string}</span> <b>options.color</b>
+									
+								</dt>
+								<dd>set a color to use for arrow, text, angle. Defaults to '#888'.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{boolean}</span> <b>options.colarrow</b>
+									
+								</dt>
+								<dd>draw arrow and text in the selected color (default is black).</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
 						
 
 					<hr />
@@ -646,7 +836,7 @@ ul.inheritsList
 									<span class="light fixedFont">{canvas object}</span> <b>cnv</b>
 									
 								</dt>
-								<dd>- the html canvas to draw on (conveniently selected via jquery).</dd>
+								<dd>- the html canvas to draw on(conveniently selected via jquery).</dd>
 							
 							</dl>
 						
@@ -662,12 +852,12 @@ ul.inheritsList
 					<a name="ToCartesian"> </a>
 					<div class="fixedFont">
 					
-					
+					<span class="light">{string}</span>
 					<b>ToCartesian</b>()
 					
 					</div>
 					<div class="description">
-						HTML of the complex number z in cartesian representation (e.g. '1+2i')
+						Return a string of the complex number z in cartesian representation (e.g. '1+2i')
 						
 						
 					</div>
@@ -682,7 +872,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>a string containing a complex number in its simplest form.</dd>
+								<dd><span class="light fixedFont">{string}</span> a string containing the simplest form of the complex number <b><i>z = x + i&middot;y</i></b></dd>
 							
 							</dl>
 						
@@ -694,12 +884,12 @@ ul.inheritsList
 					<a name="ToCC"> </a>
 					<div class="fixedFont">
 					
-					
+					<span class="light">{string}</span>
 					<b>ToCC</b>()
 					
 					</div>
 					<div class="description">
-						HTML of the complex conjugate z* in cartesian representation (e.g. '1-2i')
+						Return a string of the complex conjugate z* in cartesian representation (e.g. '1-2i')
 						
 						
 					</div>
@@ -714,7 +904,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>a string containing a complex conjugate.</dd>
+								<dd><span class="light fixedFont">{string}</span> <b><i>z&#773;</i></b>, a  string containing the complex conjugate of <b><i>z</i></b>.</dd>
 							
 							</dl>
 						
@@ -726,12 +916,12 @@ ul.inheritsList
 					<a name="ToPolar"> </a>
 					<div class="fixedFont">
 					
-					
+					<span class="light">{string}</span>
 					<b>ToPolar</b>()
 					
 					</div>
 					<div class="description">
-						HTML of the complex number z in polar representation (e.g. '2.236 e<sup>i 1.107</sup>'')
+						Return a string of the complex number z in polar representation (e.g. '2.236 e<sup>i 1.107</sup>')
 						
 						
 					</div>
@@ -746,7 +936,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>a string containing a complex number in polar coordinates.</dd>
+								<dd><span class="light fixedFont">{string}</span> a string containing the number <b><i>z</i></b> in polar coordinates with a bit of html for the superscripts.</dd>
 							
 							</dl>
 						
@@ -758,12 +948,12 @@ ul.inheritsList
 					<a name="ToR"> </a>
 					<div class="fixedFont">
 					
-					
+					<span class="light">{string}</span>
 					<b>ToR</b>()
 					
 					</div>
 					<div class="description">
-						HTML of the norm (length of the vector) of the complex number z (e.g. '2.236')
+						Return a string of the norm (length of the vector) of the complex number z (e.g. '2.236')
 						
 						
 					</div>
@@ -778,7 +968,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>a string containing a real number.</dd>
+								<dd><span class="light fixedFont">{string}</span> a string containing the norm as a real number.</dd>
 							
 							</dl>
 						
@@ -790,12 +980,12 @@ ul.inheritsList
 					<a name="ToTrigonometric"> </a>
 					<div class="fixedFont">
 					
-					
+					<span class="light">{string}</span>
 					<b>ToTrigonometric</b>()
 					
 					</div>
 					<div class="description">
-						HTML of the complex number z in trigonometric representation (e.g. '2.236(cos(1.107) + i &middot; sin(1.107))')
+						Return a string of the complex number z in trigonometric representation (e.g. '2.236(cos(1.107) + i &middot; sin(1.107))')
 						
 						
 					</div>
@@ -810,7 +1000,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>a string containing a complex number as a mathematical expression.</dd>
+								<dd><span class="light fixedFont">{string}</span> a string containing the complex number as a mathematical expression in trigonometric notation.</dd>
 							
 							</dl>
 						
@@ -831,7 +1021,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Tue Aug 11 2015 07:31:54 GMT+0200 (MESZ)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Sat Oct 31 2015 17:34:13 GMT+0100 (MEZ)
 		</div>
 	</body>
 </html>
