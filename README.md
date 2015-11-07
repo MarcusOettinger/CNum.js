@@ -4,8 +4,8 @@
 CNum.js is a javascript object plotting a representation of a number z in the
 complex plane. The idea is to set a complex value via an algebraic expression,
 transform it into different bases and draw a Gaussian plot (aka Argand
-diagram). Here's a [demo page](https://MarcusOettinger.github.io/CNum.js/).  
-License: [The MIT License](http://opensource.org/licenses/MIT).  
+diagram). Here's a demo page.  
+License: The MIT License.  
   
   
 Graphics are drawn onto a html5 canvas - this should nowadays be supported by
@@ -17,104 +17,104 @@ written, nicely formatted or similar.
   
 CNum.js uses some external libraries:
 
-  * jquery: [jquery]{http://jquery.org}
-  * jcanvas: {@link http://calebevans.me/projects/jcanvas/ jcanvas} (drawing routines)
-  * mathjs: {@link http://mathjs.org mathjs} (that can do much more!)
+  * [jquery]{http://jquery.org}
+  * [jcanvas]{http://calebevans.me/projects/jcanvas/} (drawing routines)
+  * [mathjs]{http://mathjs.org} (that can do much more!)
 Creates a CNum object - the complex value is set via an algebraic expression.  
   
 Usage is simple: object = new CNum( expression ) creates a new complex number,  
 e.g. **_ z = new CNum("2+i"); _**    will create **_z_** with the value
 **_2+i_**  
 .  
-_Defined in: _ [CNum.js](../symbols/src/CNum.js.html).
+_Defined in: _ CNum.js.
 
 Class Summary Constructor Attributes | Constructor Name and Description  
 ---|---  
   |
 
-**[CNum](../symbols/CNum.html#constructor)**(expr)   
+**CNum**(expr)   
   
 Method Summary Method Attributes | Method Name and Description  
 ---|---  
   |
 
-**[addCNum](../symbols/CNum.html#addCNum)**(z2:, options, resultoptions) 
+**addCNum**(z2:, options, resultoptions) 
 
 show the sum of two complex numbers in a Gaussian plot.  
   
   |
 
-**[addToPlot](../symbols/CNum.html#addToPlot)**(z, options) 
+**addToPlot**(z, options) 
 
 add a CNum to an existing plot - may be used to plot several numbers on one
 canvas at the same time.  
   
   |
 
-**[addVector](../symbols/CNum.html#addVector)**(z, x,y, change, options) 
+**addVector**(z, x,y, change, options) 
 
 add a CNum as a free vector to an existing plot - used to plot several numbers
 on a single canvas.  
   
   |
 
-**[displayGauss](../symbols/CNum.html#displayGauss)**(options, radius) 
+**displayGauss**(options, radius) 
 
 Draw the complex number z as an arrow in the complex plane on the selected
 canvas (set by setCanvas()).  
   
   |
 
-**[getradius](../symbols/CNum.html#getradius)**() 
+**getradius**() 
 
 Return radius of the pointer  
   
   |
 
-**[multiplyCNum](../symbols/CNum.html#multiplyCNum)**(z2:, options, resultoptions) 
+**multiplyCNum**(z2:, options, resultoptions) 
 
 multiply two complex numbers in a Gaussian plot.  
   
 &lt;static&gt;   |
 
-CNum.**[options](../symbols/CNum.html#.options)**(options)
+CNum.**options**(options)
 
 Options used to change the appearance of a plot.  
   
   |
 
-**[setCanvas](../symbols/CNum.html#setCanvas)**(cnv) 
+**setCanvas**(cnv) 
 
 Set the canvas to plot on  
   
   |
 
-**[ToCartesian](../symbols/CNum.html#ToCartesian)**() 
+**ToCartesian**() 
 
 Return a string of the complex number z in cartesian representation (e.g.  
   
   |
 
-**[ToCC](../symbols/CNum.html#ToCC)**() 
+**ToCC**() 
 
 Return a string of the complex conjugate z* in cartesian representation (e.g.  
   
   |
 
-**[ToPolar](../symbols/CNum.html#ToPolar)**() 
+**ToPolar**() 
 
 Return a string of the complex number z in polar representation (e.g.  
   
   |
 
-**[ToR](../symbols/CNum.html#ToR)**() 
+**ToR**() 
 
 Return a string of the norm (length of the vector) of the complex number z
 (e.g.  
   
   |
 
-**[ToTrigonometric](../symbols/CNum.html#ToTrigonometric)**() 
+**ToTrigonometric**() 
 
 Return a string of the complex number z in trigonometric representation (e.g.  
   
@@ -131,25 +131,25 @@ Parameters:
 
 Method Detail
 
-{[CNum](../symbols/CNum.html)} **addCNum**(z2:, options, resultoptions)
+{CNum} **addCNum**(z2:, options, resultoptions)
 
 show the sum of two complex numbers in a Gaussian plot.
 
 Parameters:
 
-{[CNum](../symbols/CNum.html)} **z2:**
+{CNum} **z2:**
 
     the number to add
 {options} **options**
 
-    set appearance of the complex number to add (see [CNum.options](../symbols/CNum.html#.options) for a list of possible settings)
+    set appearance of the complex number to add (see CNum.options for a list of possible settings)
 {options} **resultoptions**
 
-    change appearance of the resulting complex number (see [CNum.options](../symbols/CNum.html#.options) for a list of possible settings)
+    change appearance of the resulting complex number (see CNum.options for a list of possible settings)
 
 Returns:
 
-    {[CNum](../symbols/CNum.html)} result of the operation as a CNum
+    {CNum} result of the operation as a CNum
 
 * * *
 
@@ -161,12 +161,12 @@ course).
 
 Parameters:
 
-{[CNum](../symbols/CNum.html)} **z**
+{CNum} **z**
 
     the complex number to add to the current plot
 {options} **options**
 
-    change plot appearance (see [CNum.options](../symbols/CNum.html#.options) for a list of possible settings)
+    change plot appearance (see CNum.options for a list of possible settings)
 
 * * *
 
@@ -179,7 +179,7 @@ rescaled nor cleared (of course).
 
 Parameters:
 
-{[CNum](../symbols/CNum.html)} **z**
+{CNum} **z**
 
     \- the complex number to add
 {coordinate} **x,y**
@@ -187,7 +187,7 @@ Parameters:
     coordinates of the starting point
 {options} **change**
 
-    plot appearance (see [CNum.options](../symbols/CNum.html#.options) for a list of possible settings)
+    plot appearance (see CNum.options for a list of possible settings)
 **options**
     
 
@@ -204,7 +204,7 @@ Parameters:
 
 {options} **options**
 
-    change plot appearance (see [CNum.options](../symbols/CNum.html#.options) for a list of possible settings)
+    change plot appearance (see CNum.options for a list of possible settings)
 {optional number} **radius**
 
     scale the plot for a complex number of this value (default: autoscale)
@@ -226,25 +226,25 @@ Returns:
 
 * * *
 
-{[CNum](../symbols/CNum.html)} **multiplyCNum**(z2:, options, resultoptions)
+{CNum} **multiplyCNum**(z2:, options, resultoptions)
 
 multiply two complex numbers in a Gaussian plot.
 
 Parameters:
 
-{[CNum](../symbols/CNum.html)} **z2:**
+{CNum} **z2:**
 
     the number to multiply with
 {options} **options**
 
-    set appearance of the complex number to add (see [CNum.options](../symbols/CNum.html#.options) for a list of possible settings)
+    set appearance of the complex number to add (see CNum.options for a list of possible settings)
 {options} **resultoptions**
 
-    change appearance of the resulting complex number (see [CNum.options](../symbols/CNum.html#.options) for a list of possible settings)
+    change appearance of the resulting complex number (see CNum.options for a list of possible settings)
 
 Returns:
 
-    {[CNum](../symbols/CNum.html)} result of the operation as a CNum
+    {CNum} result of the operation as a CNum
 
 * * *
 
@@ -355,6 +355,6 @@ Returns:
 
 * * *
 
-Documentation generated by [JsDoc Toolkit](http://code.google.com/p/jsdoc-
-toolkit/) 2.4.0 on Sat Oct 31 2015 17:34:13 GMT+0100 (MEZ)
+Documentation generated by JsDoc Toolkit 2.4.0 on Sat Nov 07 2015 16:58:24
+GMT+0100 (MEZ)
 

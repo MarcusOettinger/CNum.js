@@ -27,11 +27,10 @@
  * <br><br>
  * CNum.js uses some external libraries:
  * <ul>
- * <li>jquery: [jquery]{http://jquery.org}</li>
- * <li>jcanvas: 
- * {@link http://calebevans.me/projects/jcanvas/ jcanvas}
+ * <li>[jquery]{http://jquery.org}</li>
+ * <li>[jcanvas]{http://calebevans.me/projects/jcanvas/}
  * (drawing routines)</li>
- * <li>mathjs: {@link http://mathjs.org mathjs} (that can do much more!)</li>
+ * <li>[mathjs]{http://mathjs.org} (that can do much more!)</li>
  * </ul>
  * Creates a CNum object - the complex value is set via an algebraic expression.
  * <br><br>
