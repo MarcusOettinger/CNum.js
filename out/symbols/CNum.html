@@ -210,7 +210,7 @@ ul.inheritsList
 				
 				
 			
-				CNum.jsis a javascript object plotting a representation of a number z in the complexplane. The idea is to set a complex value via an algebraic expression, transform it into different bases and draw a Gaussian plot (aka Arganddiagram).Here's a <a href="https://MarcusOettinger.github.io/CNum.js/">demo page</a>.<br>License: <a href="http://opensource.org/licenses/MIT">The MIT License</a>.<br><br><br>Graphics are drawn onto a html5 canvas - this should nowadaysbe supported  by most browsers.<br><br>I wrote the code because I needed a dynamic plot of complex values inwebpages for a a basic maths lecture. It serves a purpose and is far frombeing cleanly written, nicely formatted or similar.<br><br>CNum.js uses some external libraries:<ul><li>[jquery]{http://jquery.org}</li><li>[jcanvas]{http://calebevans.me/projects/jcanvas/}(drawing routines)</li><li>[mathjs]{http://mathjs.org} (that can do much more!)</li></ul>Creates a CNum object - the complex value is set via an algebraic expression.<br><br>Usage is simple: object = new CNum( expression ) creates a new complexnumber,<br>e.g. <b><i> z = new CNum("2+i"); </i></b> &nbsp;&nbsp;will create <b><i>z</i></b> with the value <b><i>2+i</i></b><br>.
+				CNum.jsis a javascript object plotting a representation of a number z in the complexplane. The idea is to set a complex value via an algebraic expression, transform it into different bases and draw a Gaussian plot (aka Arganddiagram).Here's a [demo page]{https://MarcusOettinger.github.io/CNum.js/}.<br>License: [the MIT License]{http://opensource.org/licenses/MIT}.<br><br><br>Graphics are drawn onto a html5 canvas - this should nowadaysbe supported  by most browsers.<br><br>I wrote the code because I needed a dynamic plot of complex values inwebpages for a a basic maths lecture. It serves a purpose and is far frombeing cleanly written, nicely formatted or similar.<br><br>CNum.js uses some external libraries:<ul><li>[jquery]{http://jquery.org}</li><li>[jcanvas]{http://calebevans.me/projects/jcanvas/}(drawing routines)</li><li>[mathjs]{http://mathjs.org} (that can do much more!)</li></ul>Creates a CNum object - the complex value is set via an algebraic expression.<br><br>Usage is simple: object = new CNum( expression ) creates a new complexnumber,<br>e.g. <b><i> z = new CNum("2+i"); </i></b> &nbsp;&nbsp;will create <b><i>z</i></b> with the value <b><i>2+i</i></b><br>.
 				
 				
 					<br /><i>Defined in: </i> <a href="../symbols/src/CNum.js.html">CNum.js</a>.
@@ -261,7 +261,7 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/CNum.html#addCNum">addCNum</a></b>(z2:, options, resultoptions)
+								<div class="fixedFont"><b><a href="../symbols/CNum.html#addCNum">addCNum</a></b>(z2, options, resultoptions)
 								</div>
 								<div class="description">show the sum of two complex numbers in a Gaussian plot.</div>
 							</td>
@@ -306,7 +306,7 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/CNum.html#multiplyCNum">multiplyCNum</a></b>(z2:, options, resultoptions)
+								<div class="fixedFont"><b><a href="../symbols/CNum.html#multiplyCNum">multiplyCNum</a></b>(z2, options, resultoptions)
 								</div>
 								<div class="description">multiply two complex numbers in a Gaussian plot.</div>
 							</td>
@@ -438,7 +438,7 @@ ul.inheritsList
 					<div class="fixedFont">
 					
 					<span class="light">{<a href="../symbols/CNum.html">CNum</a>}</span>
-					<b>addCNum</b>(z2:, options, resultoptions)
+					<b>addCNum</b>(z2, options, resultoptions)
 					
 					</div>
 					<div class="description">
@@ -454,7 +454,7 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/CNum.html">CNum</a>}</span> <b>z2:</b>
+									<span class="light fixedFont">{<a href="../symbols/CNum.html">CNum</a>}</span> <b>z2</b>
 									
 								</dt>
 								<dd>the number to add</dd>
@@ -554,7 +554,7 @@ ul.inheritsList
 									<span class="light fixedFont">{<a href="../symbols/CNum.html">CNum</a>}</span> <b>z</b>
 									
 								</dt>
-								<dd>- the complex number to add</dd>
+								<dd>the complex number to add</dd>
 							
 								<dt>
 									<span class="light fixedFont">{coordinate}</span> <b>x,y</b>
@@ -672,7 +672,7 @@ ul.inheritsList
 					<div class="fixedFont">
 					
 					<span class="light">{<a href="../symbols/CNum.html">CNum</a>}</span>
-					<b>multiplyCNum</b>(z2:, options, resultoptions)
+					<b>multiplyCNum</b>(z2, options, resultoptions)
 					
 					</div>
 					<div class="description">
@@ -688,7 +688,7 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/CNum.html">CNum</a>}</span> <b>z2:</b>
+									<span class="light fixedFont">{<a href="../symbols/CNum.html">CNum</a>}</span> <b>z2</b>
 									
 								</dt>
 								<dd>the number to multiply with</dd>
@@ -697,7 +697,7 @@ ul.inheritsList
 									<span class="light fixedFont">{options}</span> <b>options</b>
 									
 								</dt>
-								<dd>set appearance of the complex number to add (see <a href="../symbols/CNum.html#.options">CNum.options</a> for a list of possible settings)</dd>
+								<dd>set appearance of the complex number to multiply with (see <a href="../symbols/CNum.html#.options">CNum.options</a> for a list of possible settings)</dd>
 							
 								<dt>
 									<span class="light fixedFont">{options}</span> <b>resultoptions</b>
@@ -1021,7 +1021,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Sat Nov 07 2015 16:58:24 GMT+0100 (MEZ)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Sat Nov 07 2015 17:06:25 GMT+0100 (MEZ)
 		</div>
 	</body>
 </html>

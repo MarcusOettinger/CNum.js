@@ -15,8 +15,8 @@
  * plane. The idea is to set a complex value via an algebraic expression, 
  * transform it into different bases and draw a Gaussian plot (aka Argand
  * diagram).
- * Here's a <a href="https://MarcusOettinger.github.io/CNum.js/">demo page</a>.<br>
- * License: <a href="http://opensource.org/licenses/MIT">The MIT License</a>.<br>
+ * Here's a [demo page]{https://MarcusOettinger.github.io/CNum.js/}.<br>
+ * License: [the MIT License]{http://opensource.org/licenses/MIT}.<br>
  * <br><br>
  * Graphics are drawn onto a html5 canvas - this should nowadays
  * be supported  by most browsers.<br><br>
@@ -323,8 +323,8 @@ function CNum(expr) {
 
         // add product of zs to plot - add to existing plot
 	/** multiply two complex numbers in a Gaussian plot.
-	 * @param {CNum} z2: the number to multiply with
-	 * @param {options} options set appearance of the complex number to add (see {@link CNum.options} for a list of possible settings)
+	 * @param {CNum} z2 the number to multiply with
+	 * @param {options} options set appearance of the complex number to multiply with (see {@link CNum.options} for a list of possible settings)
 	 * @param {options} resultoptions change appearance of the resulting complex number (see {@link CNum.options} for a list of possible settings)
 	 * @return {CNum} result of the operation as a CNum
 	 */
@@ -344,7 +344,7 @@ function CNum(expr) {
 
         // add sum of zs to plot - add to existing plot
 	/** show the sum of two complex numbers in a Gaussian plot.
-	 * @param {CNum} z2: the number to add
+	 * @param {CNum} z2 the number to add
 	 * @param {options} options set appearance of the complex number to add (see {@link CNum.options} for a list of possible settings)
 	 * @param {options} resultoptions change appearance of the resulting complex number (see {@link CNum.options} for a list of possible settings)
 	 * @return {CNum} result of the operation as a CNum
@@ -384,7 +384,7 @@ function CNum(expr) {
 	* several numbers on a single canvas. This method plots a CNum starting
 	* at a point (x/y), for example to display sums of complex numbers.
         * Caveat: the plot will not be rescaled nor cleared (of course).
-        * @param {CNum} z - the complex number to add
+        * @param {CNum} z the complex number to add
         * @param {coordinate} x,y coordinates of the starting point
 	* @param {options} 
 	* change plot appearance (see {@link CNum.options} for a list of possible settings)

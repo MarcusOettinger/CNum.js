@@ -22,8 +22,8 @@
 <span class='line'> 15</span>  * plane. The idea is to set a complex value via an algebraic expression, 
 <span class='line'> 16</span>  * transform it into different bases and draw a Gaussian plot (aka Argand
 <span class='line'> 17</span>  * diagram).
-<span class='line'> 18</span>  * Here's a &lt;a href="https://MarcusOettinger.github.io/CNum.js/">demo page&lt;/a>.&lt;br>
-<span class='line'> 19</span>  * License: &lt;a href="http://opensource.org/licenses/MIT">The MIT License&lt;/a>.&lt;br>
+<span class='line'> 18</span>  * Here's a [demo page]{https://MarcusOettinger.github.io/CNum.js/}.&lt;br>
+<span class='line'> 19</span>  * License: [the MIT License]{http://opensource.org/licenses/MIT}.&lt;br>
 <span class='line'> 20</span>  * &lt;br>&lt;br>
 <span class='line'> 21</span>  * Graphics are drawn onto a html5 canvas - this should nowadays
 <span class='line'> 22</span>  * be supported  by most browsers.&lt;br>&lt;br>
@@ -330,8 +330,8 @@
 <span class='line'>323</span> 
 <span class='line'>324</span> </span><span class="WHIT">        </span><span class="COMM">// add product of zs to plot - add to existing plot</span><span class="WHIT">
 <span class='line'>325</span> </span><span class="WHIT">	</span><span class="COMM">/** multiply two complex numbers in a Gaussian plot.
-<span class='line'>326</span> 	 * @param {CNum} z2: the number to multiply with
-<span class='line'>327</span> 	 * @param {options} options set appearance of the complex number to add (see {@link CNum.options} for a list of possible settings)
+<span class='line'>326</span> 	 * @param {CNum} z2 the number to multiply with
+<span class='line'>327</span> 	 * @param {options} options set appearance of the complex number to multiply with (see {@link CNum.options} for a list of possible settings)
 <span class='line'>328</span> 	 * @param {options} resultoptions change appearance of the resulting complex number (see {@link CNum.options} for a list of possible settings)
 <span class='line'>329</span> 	 * @return {CNum} result of the operation as a CNum
 <span class='line'>330</span> 	 */</span><span class="WHIT">
@@ -351,7 +351,7 @@
 <span class='line'>344</span> 
 <span class='line'>345</span> </span><span class="WHIT">        </span><span class="COMM">// add sum of zs to plot - add to existing plot</span><span class="WHIT">
 <span class='line'>346</span> </span><span class="WHIT">	</span><span class="COMM">/** show the sum of two complex numbers in a Gaussian plot.
-<span class='line'>347</span> 	 * @param {CNum} z2: the number to add
+<span class='line'>347</span> 	 * @param {CNum} z2 the number to add
 <span class='line'>348</span> 	 * @param {options} options set appearance of the complex number to add (see {@link CNum.options} for a list of possible settings)
 <span class='line'>349</span> 	 * @param {options} resultoptions change appearance of the resulting complex number (see {@link CNum.options} for a list of possible settings)
 <span class='line'>350</span> 	 * @return {CNum} result of the operation as a CNum
@@ -391,7 +391,7 @@
 <span class='line'>384</span> 	* several numbers on a single canvas. This method plots a CNum starting
 <span class='line'>385</span> 	* at a point (x/y), for example to display sums of complex numbers.
 <span class='line'>386</span>         * Caveat: the plot will not be rescaled nor cleared (of course).
-<span class='line'>387</span>         * @param {CNum} z - the complex number to add
+<span class='line'>387</span>         * @param {CNum} z the complex number to add
 <span class='line'>388</span>         * @param {coordinate} x,y coordinates of the starting point
 <span class='line'>389</span> 	* @param {options} 
 <span class='line'>390</span> 	* change plot appearance (see {@link CNum.options} for a list of possible settings)
