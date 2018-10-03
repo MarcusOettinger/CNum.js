@@ -1,10 +1,12 @@
 #
+# Makefile creating jsdoc v2 documentation and a README.md for
+# CNum.js (marcusoettinger.github.io/CNum.js)
 #
-#
-all: doc doc-markdown
+all: minified doc
 
-doc-markdown: doc
-	html2markdown out/symbols/CNum.html | tail -n +11 > README.md
+minified: CNum.js
+	yui-compressor -o CNum.min.js CNum.js
+	cp CNum.js CNum.min.js ../gh-pages/CNum.js/
 
 doc: CNum.js
-	jsdoc CNum.js -d=out
+	jsdoc -d ./doc/ CNum.js

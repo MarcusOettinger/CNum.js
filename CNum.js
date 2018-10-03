@@ -27,7 +27,7 @@
  * <br><br>
  * CNum.js uses some external libraries:
  * <ul>
- * <li>[jquery]{http://jquery.org}</li>
+ * <li><a href="http://jquery.org">jquery</a></li>
  * <li>[jcanvas]{http://calebevans.me/projects/jcanvas/}
  * (drawing routines)</li>
  * <li>[mathjs]{http://mathjs.org} (that can do much more!)</li>
@@ -311,7 +311,7 @@ function CNum(expr) {
         // the good stuff: Graphics
         // -----------------------------------------------------------------------------
         /** Set the canvas to plot on
-         * @param {canvas object} cnv - the html canvas to draw on
+         * @param {canvas} cnv - the html canvas to draw on
 	 * (conveniently selected via jquery).
          */
         this.setCanvas = function( cnv ) {  _daCanvas = cnv; };
@@ -407,7 +407,7 @@ function CNum(expr) {
 	 * of CNums drawn onto the same canvas. Additional numbers can be
 	 * displayed on that canvas using addToPlot
 	 * @param {options} options change plot appearance (see {@link CNum.options} for a list of possible settings)
-        * @param {optional number} radius scale the plot for a complex number of this value (default: autoscale)
+        * @param {number} radius (optional) scale the plot for a complex number of this value (default: autoscale)
          *@see setCanvas(): Set the canvas to draw on.
          *@see addToPlot(): draw another number into an existing plot.
         */
