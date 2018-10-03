@@ -1,0 +1,1027 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>JsDoc Reference - CNum</title>
+
+		<style type="text/css">
+			/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+	width: 800px;
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	margin-top: 24px;
+	float: left;
+	width: 160px;
+	position: absolute;
+	left: 8px;
+	background-color: #F3F3F3;
+	padding: 8px;
+}
+
+#content
+{
+	margin-left: 190px;
+	width: 600px;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 8px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2 { font-size: 110%; }
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul.inheritsList
+{
+	list-style: square;
+	margin-left: 20px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px; 
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+		</style>
+	</head>
+
+	<body>
+<!-- ============================== header ================================= -->	
+		<!-- begin static/header.html -->
+		<div id="header">
+</div>
+		<!-- end static/header.html -->
+
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<div align="center"><a href="../index.html">Class Index</a>
+| <a href="../files.html">File Index</a></div>
+<hr />
+<h2>Classes</h2>
+<ul class="classList">
+	
+	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
+	
+	<li><a href="../symbols/CNum.html">CNum</a></li>
+	
+</ul>
+<hr />
+			<!-- end publish.classesIndex -->
+		</div>
+		
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				Class CNum
+			</h1>
+
+<!-- ============================== class summary ========================== -->			
+			<p class="description">
+				
+				
+			
+				CNum.jsis a javascript object plotting a representation of a number z in the complexplane. The idea is to set a complex value via an algebraic expression, transform it into different bases and draw a Gaussian plot (aka Arganddiagram).Here's a [demo page]{https://MarcusOettinger.github.io/CNum.js/}.<br>License: [the MIT License]{http://opensource.org/licenses/MIT}.<br><br><br>Graphics are drawn onto a html5 canvas - this should nowadaysbe supported  by most browsers.<br><br>I wrote the code because I needed a dynamic plot of complex values inwebpages for a a basic maths lecture. It serves a purpose and is far frombeing cleanly written, nicely formatted or similar.<br><br>CNum.js uses some external libraries:<ul><li><a href="http://jquery.org">jquery</a></li><li>[jcanvas]{http://calebevans.me/projects/jcanvas/}(drawing routines)</li><li>[mathjs]{http://mathjs.org} (that can do much more!)</li></ul>Creates a CNum object - the complex value is set via an algebraic expression.<br><br>Usage is simple: object = new CNum( expression ) creates a new complexnumber,<br>e.g. <b><i> z = new CNum("2+i"); </i></b> &nbsp;&nbsp;will create <b><i>z</i></b> with the value <b><i>2+i</i></b><br>.
+				
+				
+					<br /><i>Defined in: </i> <a href="../symbols/src/CNum.js.html">CNum.js</a>.
+				
+			</p>
+
+<!-- ============================== constructor summary ==================== -->			
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class CNum.">
+				<caption>Class Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/CNum.html#constructor">CNum</a></b>(expr)
+							</div>
+							<div class="description"></div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class CNum.">
+					<caption>Method Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Method Attributes</th>
+							<th scope="col">Method Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/CNum.html#addCNum">addCNum</a></b>(z2, options, resultoptions)
+								</div>
+								<div class="description">show the sum of two complex numbers in a Gaussian plot.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/CNum.html#addToPlot">addToPlot</a></b>(z, options)
+								</div>
+								<div class="description">add a CNum to an existing plot - may be used to plot severalnumbers on one canvas at the same time.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/CNum.html#addVector">addVector</a></b>(z, x,y, change, options)
+								</div>
+								<div class="description">add a CNum as a free vector to an existing plot - used to plotseveral numbers on a single canvas.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/CNum.html#displayGauss">displayGauss</a></b>(options, radius)
+								</div>
+								<div class="description">Draw the complex number z as an arrow in the complex plane on theselected canvas (set by setCanvas()).</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/CNum.html#getradius">getradius</a></b>()
+								</div>
+								<div class="description">Return radius of the pointer</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/CNum.html#multiplyCNum">multiplyCNum</a></b>(z2, options, resultoptions)
+								</div>
+								<div class="description">multiply two complex numbers in a Gaussian plot.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">CNum.<b><a href="../symbols/CNum.html#.options">options</a></b>(options)
+								</div>
+								<div class="description">Options used to change the appearance of a plot.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/CNum.html#setCanvas">setCanvas</a></b>(cnv)
+								</div>
+								<div class="description">Set the canvas to plot on</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/CNum.html#ToCartesian">ToCartesian</a></b>()
+								</div>
+								<div class="description">Return a string of the complex number z in cartesian representation (e.g.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/CNum.html#ToCC">ToCC</a></b>()
+								</div>
+								<div class="description">Return a string of the complex conjugate z* in cartesian representation (e.g.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/CNum.html#ToPolar">ToPolar</a></b>()
+								</div>
+								<div class="description">Return a string of the complex number z in polar representation (e.g.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/CNum.html#ToR">ToR</a></b>()
+								</div>
+								<div class="description">Return a string of the norm (length of the vector) of the complex number z (e.g.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/CNum.html#ToTrigonometric">ToTrigonometric</a></b>()
+								</div>
+								<div class="description">Return a string of the complex number z in trigonometric representation (e.g.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== constructor details ==================== -->		
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					Class Detail
+				</div>
+				
+				<div class="fixedFont">
+						<b>CNum</b>(expr)
+				</div>
+				
+				<div class="description">
+					
+					
+				</div>
+				
+				
+				
+				
+					
+						<dl class="detailList">
+						<dt class="heading">Parameters:</dt>
+						
+							<dt>
+								<span class="light fixedFont">{string}</span>  <b>expr</b>
+								
+							</dt>
+								<dd>a text representing a complex number. Cartesian, trigonometric and polar expressions can be used, e.g. '2+3i' or '12*exp(3i)'<br><br></dd>
+						
+						</dl>
+					
+					
+					
+					
+					
+					
+					
+
+			</div>
+			
+
+<!-- ============================== field details ========================== -->		
+			
+
+<!-- ============================== method details ========================= -->		
+			
+				<div class="sectionTitle">
+					Method Detail
+				</div>
+				
+					<a name="addCNum"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/CNum.html">CNum</a>}</span>
+					<b>addCNum</b>(z2, options, resultoptions)
+					
+					</div>
+					<div class="description">
+						show the sum of two complex numbers in a Gaussian plot.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/CNum.html">CNum</a>}</span> <b>z2</b>
+									
+								</dt>
+								<dd>the number to add</dd>
+							
+								<dt>
+									<span class="light fixedFont">{options}</span> <b>options</b>
+									
+								</dt>
+								<dd>set appearance of the complex number to add (see <a href="../symbols/CNum.html#.options">CNum.options</a> for a list of possible settings)</dd>
+							
+								<dt>
+									<span class="light fixedFont">{options}</span> <b>resultoptions</b>
+									
+								</dt>
+								<dd>change appearance of the resulting complex number (see <a href="../symbols/CNum.html#.options">CNum.options</a> for a list of possible settings)</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/CNum.html">CNum</a>}</span> result of the operation as a CNum</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="addToPlot"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>addToPlot</b>(z, options)
+					
+					</div>
+					<div class="description">
+						add a CNum to an existing plot - may be used to plot severalnumbers on one canvas at the same time.Caveat: the plot will not be rescaled nor cleared (of course).
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/CNum.html">CNum</a>}</span> <b>z</b>
+									
+								</dt>
+								<dd>the complex number to add to the current plot</dd>
+							
+								<dt>
+									<span class="light fixedFont">{options}</span> <b>options</b>
+									
+								</dt>
+								<dd>change plot appearance (see <a href="../symbols/CNum.html#.options">CNum.options</a> for a list of possible settings)</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="addVector"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>addVector</b>(z, x,y, change, options)
+					
+					</div>
+					<div class="description">
+						add a CNum as a free vector to an existing plot - used to plotseveral numbers on a single canvas. This method plots a CNum startingat a point (x/y), for example to display sums of complex numbers.Caveat: the plot will not be rescaled nor cleared (of course).
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/CNum.html">CNum</a>}</span> <b>z</b>
+									
+								</dt>
+								<dd>the complex number to add</dd>
+							
+								<dt>
+									<span class="light fixedFont">{coordinate}</span> <b>x,y</b>
+									
+								</dt>
+								<dd>coordinates of the starting point</dd>
+							
+								<dt>
+									<span class="light fixedFont">{options}</span> <b>change</b>
+									
+								</dt>
+								<dd>plot appearance (see <a href="../symbols/CNum.html#.options">CNum.options</a> for a list of possible settings)</dd>
+							
+								<dt>
+									<b>options</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="displayGauss"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>displayGauss</b>(options, radius)
+					
+					</div>
+					<div class="description">
+						Draw the complex number z as an arrow in the complex plane on theselected canvas (set by setCanvas()).This method either plots a single CNum or the first one in a seriesof CNums drawn onto the same canvas. Additional numbers can bedisplayed on that canvas using addToPlot
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{options}</span> <b>options</b>
+									
+								</dt>
+								<dd>change plot appearance (see <a href="../symbols/CNum.html#.options">CNum.options</a> for a list of possible settings)</dd>
+							
+								<dt>
+									<span class="light fixedFont">{optional number}</span> <b>radius</b>
+									
+								</dt>
+								<dd>scale the plot for a complex number of this value (default: autoscale)</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+								<dd>setCanvas(): Set the canvas to draw on.</dd>
+							
+								<dd>addToPlot(): draw another number into an existing plot.</dd>
+							
+							</dl>
+						
+
+					<hr />
+				
+					<a name="getradius"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{float}</span>
+					<b>getradius</b>()
+					
+					</div>
+					<div class="description">
+						Return radius of the pointer
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{float}</span> radius of the complex number (norm)</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="multiplyCNum"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/CNum.html">CNum</a>}</span>
+					<b>multiplyCNum</b>(z2, options, resultoptions)
+					
+					</div>
+					<div class="description">
+						multiply two complex numbers in a Gaussian plot.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/CNum.html">CNum</a>}</span> <b>z2</b>
+									
+								</dt>
+								<dd>the number to multiply with</dd>
+							
+								<dt>
+									<span class="light fixedFont">{options}</span> <b>options</b>
+									
+								</dt>
+								<dd>set appearance of the complex number to multiply with (see <a href="../symbols/CNum.html#.options">CNum.options</a> for a list of possible settings)</dd>
+							
+								<dt>
+									<span class="light fixedFont">{options}</span> <b>resultoptions</b>
+									
+								</dt>
+								<dd>change appearance of the resulting complex number (see <a href="../symbols/CNum.html#.options">CNum.options</a> for a list of possible settings)</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/CNum.html">CNum</a>}</span> result of the operation as a CNum</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".options"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">CNum.</span><b>options</b>(options)
+					
+					</div>
+					<div class="description">
+						Options used to change the appearance of a plot. This set of optionsis used in all methods displaying numbers.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>options</b>
+									
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<span class="light fixedFont">{boolean}</span> <b>options.clear</b>
+									
+								</dt>
+								<dd>- remove canvas contents before drawing</dd>
+							
+								<dt>
+									<span class="light fixedFont">{boolean}</span> <b>options.coords</b>
+									
+								</dt>
+								<dd>- draw a coordinate system</dd>
+							
+								<dt>
+									<span class="light fixedFont">{boolean}</span> <b>options.Arrow</b>
+									
+								</dt>
+								<dd>draw <i><b>z</b></i> as an arrow - if set to false, draw a point. Defaults to true.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{boolean}</span> <b>options.circle</b>
+									
+								</dt>
+								<dd>draw a circle with radius <i><b>|z|</b></i>. Defaults to false.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{boolean}</span> <b>options.ReIm</b>
+									
+								</dt>
+								<dd>show real and imaginary part in the plot. Default is true.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{boolean}</span> <b>options.Ctext</b>
+									
+								</dt>
+								<dd>print <i><b>z</b></i> in cartesian notation. Defaults to true</dd>
+							
+								<dt>
+									<span class="light fixedFont">{boolean}</span> <b>options.arc</b>
+									
+								</dt>
+								<dd>show angle and value as an arc. Default is true.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{string}</span> <b>options.color</b>
+									
+								</dt>
+								<dd>set a color to use for arrow, text, angle. Defaults to '#888'.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{boolean}</span> <b>options.colarrow</b>
+									
+								</dt>
+								<dd>draw arrow and text in the selected color (default is black).</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="setCanvas"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>setCanvas</b>(cnv)
+					
+					</div>
+					<div class="description">
+						Set the canvas to plot on
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{canvas object}</span> <b>cnv</b>
+									
+								</dt>
+								<dd>- the html canvas to draw on(conveniently selected via jquery).</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="ToCartesian"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{string}</span>
+					<b>ToCartesian</b>()
+					
+					</div>
+					<div class="description">
+						Return a string of the complex number z in cartesian representation (e.g. '1+2i')
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{string}</span> a string containing the simplest form of the complex number <b><i>z = x + i&middot;y</i></b></dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="ToCC"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{string}</span>
+					<b>ToCC</b>()
+					
+					</div>
+					<div class="description">
+						Return a string of the complex conjugate z* in cartesian representation (e.g. '1-2i')
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{string}</span> <b><i>z&#773;</i></b>, a  string containing the complex conjugate of <b><i>z</i></b>.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="ToPolar"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{string}</span>
+					<b>ToPolar</b>()
+					
+					</div>
+					<div class="description">
+						Return a string of the complex number z in polar representation (e.g. '2.236 e<sup>i 1.107</sup>')
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{string}</span> a string containing the number <b><i>z</i></b> in polar coordinates with a bit of html for the superscripts.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="ToR"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{string}</span>
+					<b>ToR</b>()
+					
+					</div>
+					<div class="description">
+						Return a string of the norm (length of the vector) of the complex number z (e.g. '2.236')
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{string}</span> a string containing the norm as a real number.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="ToTrigonometric"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{string}</span>
+					<b>ToTrigonometric</b>()
+					
+					</div>
+					<div class="description">
+						Return a string of the complex number z in trigonometric representation (e.g. '2.236(cos(1.107) + i &middot; sin(1.107))')
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{string}</span> a string containing the complex number as a mathematical expression in trigonometric notation.</dd>
+							
+							</dl>
+						
+						
+						
+
+					
+				
+			
+			
+<!-- ============================== event details ========================= -->		
+			
+			
+			<hr />
+		</div>
+
+		
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Sun Nov 08 2015 08:43:19 GMT+0100 (MEZ)
+		</div>
+	</body>
+</html>
