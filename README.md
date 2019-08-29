@@ -15,10 +15,12 @@ for a a basic maths lecture. It serves a purpose and is far from being cleanly
 written, nicely formatted or similar.  
   
 CNum.js uses some external libraries:
+Here's a [demo page](https://marcusoettinger.github.io/LNum.js "Demo page").
 
-  * (http://jquery.org)[jquery]
-  * (http://calebevans.me/projects/jcanvas/)[jcanvas] (drawing routines)
-  * (http://mathjs.org) [mathjs] (that can do much more!)
+LNum.js uses some external libraries:
+  * [jquery](http://jquery.org)
+  * [jcanvas](http://calebevans.me/projects/jcanvas/) (drawing routines)
+  * [mathjs](http://mathjs.org) (that can do much more!)
 Creates a CNum object - the complex value is set via an algebraic expression.  
   
 Usage is simple: object = new CNum( expression ) creates a new complex number,  
@@ -29,7 +31,7 @@ For further information see the CNum.js [documentation](doc/index.html).
 
 ## Installation
 
-Clone the repository or get a package and include the file LNum.js after
+Clone the repository or get a package and include the file CNum.js after
 jquery. That's it.
 
 ## Licensing
