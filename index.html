@@ -8,21 +8,19 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/1.3.0/math.min.js"></script>
-<script src='CNum.min.js'></script>
-
-
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/1.3.0/math.min.js"></script>
+    <script src='CNum.min.js'></script>
   </head>
-  <body>
-    <section class="page-header">
+<body>
+<section class="page-header">
       <h1 class="project-name">Cnum.js</h1>
       <h2 class="project-tagline">A javascript class to plot a complex number in a z-plane on a html5 canvas. Plots of basic calculations supported.</h2>
       <a href="https://github.com/MarcusOettinger/CNum.js" class="btn">View on GitHub</a>
       <a href="https://github.com/MarcusOettinger/CNum.js/zipball/master" class="btn">Download .zip</a>
       <a href="https://github.com/MarcusOettinger/CNum.js/tarball/master" class="btn">Download .tar.gz</a>
-    </section>
+</section>
 
-    <section class="main-content">
+<section class="main-content">
 
 <h1>CNum example</h1>
 <p>CNum.js is a javascript class to display a complex number in a 
@@ -86,7 +84,7 @@ is able to do:</p>
 <pre><code>
         var o1 = { clear: true, coords: true, circle: false, color: "#F00" };
         z1 = new CNum( "2+3i" );
-        cnv2 = $("#canvas2");
+	var cnv2 = document.getElementById('id_of_canvas_2');
         z1.setCanvas( cnv2 );
         z1.displayGauss(o1);       
         
@@ -119,7 +117,8 @@ Plot the numbers z5 and z6 onto a canvas with id
 &quot;canvasVectors&quot;
 as
 <pre><code>
-        z5.setCanvas( $("#canvasVectors") );
+        var cnv3 = document.getElementById('id_of_canvas_3');
+        z5.setCanvas( cnv3 );
         z5.displayGauss(Options );
         z5.addToPlot(z6, Options );
 </pre></code>
@@ -147,10 +146,12 @@ options used to plot the results
 adding or multiplying the numbers and drawing the results
 is as simple as
 <pre><code>
-        z5.setCanvas( $("#canvasAddition") );
+        var cnv4 = document.getElementById('id_of_canvas_4');
+        z5.setCanvas( cnv4 );
         z5.addCNum(z6, Options , OptionsResult);
         
-        z5.setCanvas( $("#canvasMultiplication") );
+	var cnv5 = document.getElementById('id_of_canvas_5');
+        z5.setCanvas( cnv5 );
         z5.multiplyCNum(z6, Options , OptionsResult);
 </pre></code></div>
 
