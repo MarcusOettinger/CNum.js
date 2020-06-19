@@ -11,81 +11,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/1.3.0/math.min.js"></script>
 <script src='CNum.min.js'></script>
 
-<script  type="text/javascript">
-    function displaySpecials() {
-        // construct a complex number and plot it on canvas:
-        //   Options: draw cartesian axes, no circle, real/imaginary part in red
-        var o1 = { clear: true, coords: true, circle: false, color: '#F00'};
-        var cnv2 = document.getElementById('canvas2');
-        z1 = new CNum( "2+3i" );
-        z1.setCanvas( cnv2 );
-        z1.displayGauss(o1);		// plot using selected options
 
-        // construct a second CNum (z2) - when adding to an existing plot, options
-        // clear, coords and circle are silently ignored.
-        var o2 = { clear: false, coords: false, circle: false, color: '#0F0', colarrow:true, arc:true };
-        z2 = new CNum( "-2+2i" );
-        z1.addToPlot( z2, o2 );		// plot z2 on the canvas used by z1 using selected options
-        
-        // add a third z3 to the plot, set the color to blue
-        z3 = new CNum( "-1-3i" );
-        z1.addToPlot( z3, { color: "#0000F3" });
-        
-        // show a sum of zs
-        var Options = { clear: true, 
-                        coords: true, 
-                        circle: false, 
-                        ReIm: false,
-                        Ctext: false, 
-                        arc: false};
-        var OptionsResult = { ReIm: false,
-                        Ctext: true,
-                        colarrow: true,
-                        color: '#A00',
-                        arc: true};
-        z5 = new CNum( "3+3i" );
-        z6 = new CNum( "-2+i" );
-        
-        var cnvvec = document.getElementById('canvasVectors');
-        z5.setCanvas( cnvvec );
-        z5.displayGauss(Options );
-        z5.addToPlot(z6, Options );
-        
-        var cnvadd = document.getElementById('canvasAddition');
-        z5.setCanvas( cnvadd );
-        z5.addCNum(z6, Options , OptionsResult);
-        
-        var cnvmult = document.getElementById('canvasMultiplication');
-        z5.setCanvas( cnvmult );
-        z5.multiplyCNum(z6, Options , OptionsResult);
-    }
-
-    function display(){
-        var cnv = document.getElementById('canvas');
-        var str = document.getElementById('exprinput').value;
-        z = new CNum( str );
-        z.setCanvas( cnv );
-        
-        document.getElementById("cartesian").innerHTML = z.ToCartesian();
-        document.getElementById("cc").innerHTML = z.ToCC();
-        document.getElementById("abs").innerHTML = z.ToR();
-        document.getElementById("polar").innerHTML = z.ToPolar();
-        document.getElementById("trigonometric").innerHTML = z.ToTrigonometric();
-
-        z.displayGauss();
-//        image = $("#canvas").getCanvasImage();
-//        image = image.replace("image/png", "application/octet-stream");
-//        window.open(image);
-    };
-  
-display(); 
-displaySpecials();
-document.addEventListener("DOMContentLoaded", function () {
-	document.getElementById("exprinput")
-	          .addEventListener("change", function () { display(); });
-});
-  
-</script>
   </head>
   <body>
     <section class="page-header">
@@ -97,8 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
     </section>
 
     <section class="main-content">
-
-
 
 <h1>CNum example</h1>
 <p>CNum.js is a javascript class to display a complex number in a 
@@ -119,8 +43,10 @@ fancy stuff like <i>12*exp(2*i)+2i )</i>:</p>
 complex number as an arrow in the z-plane, showing real and imaginary
 part in grey. By default, the radius of the pointer will be shown as a circle.
 <pre><code>
-  z = new CNum( $("#exprinput").val());
-  z.setCanvas( $("#canvas") );
+  var cnv = document.getElementById('id_of_canvas');
+  var str = document.getElementById('id_of_input').value;
+  z = new CNum( str );
+  z.setCanvas( cnv );
   z.displayGauss();
 </code></pre>
 </div>
@@ -238,6 +164,80 @@ is as simple as
 
     </section>
 
+<script  type="text/javascript">
+    function displaySpecials() {
+        // construct a complex number and plot it on canvas:
+        //   Options: draw cartesian axes, no circle, real/imaginary part in red
+        var o1 = { clear: true, coords: true, circle: false, color: '#F00'};
+        var cnv2 = document.getElementById('canvas2');
+        z1 = new CNum( "2+3i" );
+        z1.setCanvas( cnv2 );
+        z1.displayGauss(o1);		// plot using selected options
+
+        // construct a second CNum (z2) - when adding to an existing plot, options
+        // clear, coords and circle are silently ignored.
+        var o2 = { clear: false, coords: false, circle: false, color: '#0F0', colarrow:true, arc:true };
+        z2 = new CNum( "-2+2i" );
+        z1.addToPlot( z2, o2 );		// plot z2 on the canvas used by z1 using selected options
+        
+        // add a third z3 to the plot, set the color to blue
+        z3 = new CNum( "-1-3i" );
+        z1.addToPlot( z3, { color: "#0000F3" });
+        
+        // show a sum of zs
+        var Options = { clear: true, 
+                        coords: true, 
+                        circle: false, 
+                        ReIm: false,
+                        Ctext: false, 
+                        arc: false};
+        var OptionsResult = { ReIm: false,
+                        Ctext: true,
+                        colarrow: true,
+                        color: '#A00',
+                        arc: true};
+        z5 = new CNum( "3+3i" );
+        z6 = new CNum( "-2+i" );
+        
+        var cnvvec = document.getElementById('canvasVectors');
+        z5.setCanvas( cnvvec );
+        z5.displayGauss(Options );
+        z5.addToPlot(z6, Options );
+        
+        var cnvadd = document.getElementById('canvasAddition');
+        z5.setCanvas( cnvadd );
+        z5.addCNum(z6, Options , OptionsResult);
+        
+        var cnvmult = document.getElementById('canvasMultiplication');
+        z5.setCanvas( cnvmult );
+        z5.multiplyCNum(z6, Options , OptionsResult);
+    }
+
+    function display(){
+        var cnv = document.getElementById('canvas');
+        var str = document.getElementById('exprinput').value;
+        z = new CNum( str );
+        z.setCanvas( cnv );
+        
+        document.getElementById("cartesian").innerHTML = z.ToCartesian();
+        document.getElementById("cc").innerHTML = z.ToCC();
+        document.getElementById("abs").innerHTML = z.ToR();
+        document.getElementById("polar").innerHTML = z.ToPolar();
+        document.getElementById("trigonometric").innerHTML = z.ToTrigonometric();
+
+        z.displayGauss();
+//        image = $("#canvas").getCanvasImage();
+//        image = image.replace("image/png", "application/octet-stream");
+//        window.open(image);
+    };
   
-  </body>
+display(); 
+displaySpecials();
+document.addEventListener("DOMContentLoaded", function () {
+	document.getElementById("exprinput")
+	          .addEventListener("change", function () { display(); });
+});
+  
+</script>
+</body>
 </html>
