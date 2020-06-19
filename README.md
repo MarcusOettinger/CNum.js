@@ -13,22 +13,20 @@ I wrote the code because I needed a dynamic plot of complex values in webpages
 for a a basic maths lecture. It serves a purpose and is far from being cleanly
 written, nicely formatted or similar.  
   
-CNum.js uses some external libraries:
-  * [jquery](http://jquery.org)
-  * [jcanvas](http://calebevans.me/projects/jcanvas/) (drawing routines)
-  * [mathjs](http://mathjs.org) (that can do much more!)
-Creates a CNum object - the complex value is set via an algebraic expression.  
+CNum.js uses one external library:
+  * [mathjs](http://mathjs.org) (that can do much more!)  
   
-Usage is simple: object = new CNum( expression ) creates a new complex number,  
-e.g. **_ z = new CNum("2+i"); _**    will create **_z_** with the value
-**_2+i_**  
-.  
+Usage is simple: object = new CNum( expression ) creates a new CNum object - the
+complex value is set via an algebraic expression. For example,
+**_ z = new CNum("2+i"); _**    will create **_z_** with the value
+**_2+i_**.
+
 For further information see the CNum.js [documentation](doc/index.html).
 
 ## Installation
 
 Clone the repository or get a package and include the file CNum.js after
-jquery. That's it.
+mathjs. That's it.
 
 ## Licensing
 
