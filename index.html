@@ -8,9 +8,7 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.1.0/es5-shim.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/1.3.0/math.min.js"></script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
 <script src="jcanvas.min.js" type="text/javascript"></script>
 <script src='CNum.min.js'></script>
 
@@ -19,8 +17,9 @@
         // construct a complex number and plot it on canvas:
         //   Options: draw cartesian axes, no circle, real/imaginary part in red
         var o1 = { clear: true, coords: true, circle: false, color: '#F00'};
+        var cnv2 = document.getElementById('canvas2');
         z1 = new CNum( "2+3i" );
-        z1.setCanvas( $("#canvas2") );
+        z1.setCanvas( cnv2 );
         z1.displayGauss(o1);		// plot using selected options
 
         // construct a second CNum (z2) - when adding to an existing plot, options
@@ -48,27 +47,32 @@
         z5 = new CNum( "3+3i" );
         z6 = new CNum( "-2+i" );
         
-        z5.setCanvas( $("#canvasVectors") );
+        var cnvvec = document.getElementById('canvasVectors');
+        z5.setCanvas( cnvvec );
         z5.displayGauss(Options );
         z5.addToPlot(z6, Options );
         
-        z5.setCanvas( $("#canvasAddition") );
+        var cnvadd = document.getElementById('canvasAddition');
+        z5.setCanvas( cnvadd );
         z5.addCNum(z6, Options , OptionsResult);
         
-        z5.setCanvas( $("#canvasMultiplication") );
+        var cnvmult = document.getElementById('canvasMultiplication');
+        z5.setCanvas( cnvmult );
         z5.multiplyCNum(z6, Options , OptionsResult);
 
     }
 
     function display(){
-        z = new CNum( $("#exprinput").val() );
-        z.setCanvas( $("#canvas") );
-         
-        $("#cartesian").html( z.ToCartesian() );
-        $("#cc").html( z.ToCC() );
-        $("#abs").html( z.ToR() );
-        $("#polar").html( z.ToPolar() );
-        $("#trigonometric").html( z.ToTrigonometric() );
+        var cnv = document.getElementById('canvas');
+        var str = document.getElementById('exprinput').value;
+        z = new CNum( str );
+        z.setCanvas( cnv );
+        
+        document.getElementById("cartesian").innerHTML = z.ToCartesian();
+        document.getElementById("cc").innerHTML = z.ToCC();
+        document.getElementById("abs").innerHTML = z.ToR();
+        document.getElementById("polar").innerHTML = z.ToPolar();
+        document.getElementById("trigonometric").innerHTML = z.ToTrigonometric();
 
         z.displayGauss();
 //        image = $("#canvas").getCanvasImage();
@@ -80,6 +84,14 @@
         display();  // plot default value (set via textinput)
         displaySpecials();
     });
+  
+display(); 
+displaySpecials();
+document.addEventListener("DOMContentLoaded", function () {
+	document.getElementById("exprinput")
+	          .addEventListener("change", function () { display(); });
+});
+  
 </script>
   </head>
   <body>
@@ -108,7 +120,7 @@ easy way to plot the results.</p>
 <p>Want to use the force? You can do so by entering a complex
 number into this text field (maybe you would like to try some
 fancy stuff like <i>12*exp(2*i)+2i )</i>:</p>
-<p>complex number: <input type="text" value="2 + 3i" id="exprinput" size="12" onchange="display()"></p>
+<p>complex number: <input type="text" value="2 + 3i" id="exprinput" size="12"></p>
 <canvas id="canvas" width='350' height='310'></canvas>
 <div>This is the default appearance: CNum will draw the
 complex number as an arrow in the z-plane, showing real and imaginary
