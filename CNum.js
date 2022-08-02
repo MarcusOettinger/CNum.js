@@ -1,4 +1,4 @@
-// Mon Sep  9 11:17:26     2019
+// Tue, 02 Aug 22 11:56:35 +0000
 // M. Oettinger, Marcus -at- oettinger-physics.de
 //
 // v 0.5 - removed jquery and jcanvas dependency
