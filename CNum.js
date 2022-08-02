@@ -1,12 +1,13 @@
 // Tue, 02 Aug 22 11:56:35 +0000
 // M. Oettinger, Marcus -at- oettinger-physics.de
 //
+// v 0.6 - mathematical angle measurement (radians)
 // v 0.5 - removed jquery and jcanvas dependency
 //
 /** 
  *  @file CNum.js: sketch the complex plane in a html5 canvas
  *  @author Marcus Oettinger <info@oettinger-phyiscs.de>
- *  @version 0.3.1
+ *  @version 0.6
  *  @license MIT (see {@link http://opensource.org/licenses/MIT} or LICENSE).
  */
 /**
@@ -25,20 +26,21 @@
  * being cleanly written, nicely formatted or similar.
  * 
  * <br><br>
- * CNum.js uses an external library:
+ * CNum.js uses a single external library:
  * <ul>
  * <li>[mathjs]{http://mathjs.org} (that can do much more!)</li>
  * </ul>
- * Creates a CNum object - the complex value is set via an algebraic expression.
+ * Creates a CNum object - the complex value is set as an algebraic expression
+ * in cartesian, trigonometric or polar form using i as the imaginary unit.
  * <br><br>
- * Usage is quit simple: object = new CNum( expression ) creates a new complex
+ * Usage is quite simple: object = new CNum( expr ) creates a new complex
  * number,<br>
  * e.g. <b><i> z = new CNum("2+i"); </i></b> &nbsp;&nbsp;
  * will create <b><i>z</i></b> with the value <b><i>2+i</i></b><br>.
- * @param {string} expr a text representing a complex number. Cartesian, trigonometric and polar expressions can be used, e.g. '2+3i' or '12*exp(3i)'
+ * @param {string} expr a text representing a complex number with imaginary unit i. Cartesian, trigonometric and polar expressions can be used, e.g. '2+3i' or '12*exp(3i)'
  * <br><br>
 */
-function CNum(expr) {
+function CNum( expr ) {
         // Private:
         // -----------------------------------------------------------------------------
         // paranoia mode: set some reasonable defaults
@@ -95,7 +97,7 @@ function CNum(expr) {
             	arc: true, 		// show angle and value as an arc
             	showDegree: false,	// show angles in degree (otherwise radians)
 		showPiFractions: true,	// show angles in multiples of π (otherwise radians)
-            	decimals: 1,		// decimal places used in radius and angle values
+            	decimals: 2,		// decimal places used in radius and angle values
 		fontSize: '12px', 
             	fontFamily: "serif",
             	// colors
@@ -119,7 +121,7 @@ function CNum(expr) {
 						// B*A*D if drawing polar plots...			
 	this._daSettings = _defaults;		// Each CNum holds its own set of options
 	var _numlist = [];			// a list of CNums to draw on the main canvas
-	_count = 1;			// index the number of arrows on cnv - used to display
+	_count = 1;				// index the number of arrows on cnv - used to display
 						// angles in a readable form
 
         // calculate cartesian coordinates of a given point (x/y) on the canvas
@@ -151,7 +153,7 @@ function CNum(expr) {
 		return index >= 0 && input.indexOf(search, index) > -1;
 	}
 	
-	// format angle (given in radians) in radians or degree
+	// format angle (given in radians) in radians, multiples of π or degree
 	function _formatAngle(angle, showDegree, showPiFractions, decimals ) {
 		return showDegree ? 
 			(math.round((angle * 360)/ (2*Math.PI), decimals ) + '°') :
