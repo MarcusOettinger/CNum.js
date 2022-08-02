@@ -73,7 +73,8 @@ function CNum(expr) {
 	 * 	true to supress plotting any text, to true to display the value <i><b>z</b></i> in cartesian
 	 *	notation or a string to be displayed. Defaults to true.
 	 * @param {boolean} options.arc show angle and value as an arc. Default is true.
-	 * @param {boolean} options.showDegree print angles in degrees or in radians. Default is true.
+	 * @param {boolean} options.showDegree print angles in degrees instead of radians. Default is false.
+	 * @param {boolean} options.ShowPiFractions print angles in multiples of the number π (if set to radians). Default is true.
 	 * @param {number } options.decimals decimal places used in radius and angle values printed. Default: 1.
 	 * @param {number} font Size - font size in pixel, e.g. '10', '10px'
 	 * @param {string} fontFamily - the font family (default: "sans-serif")
@@ -92,7 +93,8 @@ function CNum(expr) {
             	ReIm: true, 		// show real and imaginary part
             	Ctext: true,		// print z in cartesian notation
             	arc: true, 		// show angle and value as an arc
-            	showDegree: true,	// show angles in degree (otherwise radians)
+            	showDegree: false,	// show angles in degree (otherwise radians)
+		showPiFractions: true,	// show angles in multiples of π (otherwise radians)
             	decimals: 1,		// decimal places used in radius and angle values
 		fontSize: '12px', 
             	fontFamily: "serif",
@@ -150,10 +152,10 @@ function CNum(expr) {
 	}
 	
 	// format angle (given in radians) in radians or degree
-	function _formatAngle(angle, showDegree, decimals ) {
+	function _formatAngle(angle, showDegree, showPiFractions, decimals ) {
 		return showDegree ? 
 			(math.round((angle * 360)/ (2*Math.PI), decimals ) + '°') :
-			math.round( angle, decimals ) ;
+			showPiFractions ? math.round( angle/Math.PI, decimals ) + 'π' : math.round( angle, decimals ) ;
 	}
 
 
@@ -471,7 +473,7 @@ function CNum(expr) {
                 tx = X_C + (ra-10)*math.cos(angle - PI/6);
                 ty = Y_C - (ra-10)*math.sin(angle - PI/6);
                 _drawText( z.GetSettings(), { x: tx,  y: ty,
-                	text: _formatAngle( angle, z.GetSettings().showDegree, z.GetSettings().decimals ) });
+                	text: _formatAngle( angle, z.GetSettings().showDegree, z.GetSettings().showPiFractions, z.GetSettings().decimals ) });
         }; // _drawAngle
 
 
@@ -566,7 +568,7 @@ function CNum(expr) {
         	var d = typeof decimals == 'undefined' ? this._daSettings.decimals : decimals;
                 var r = math.round( this.zNum.toPolar().r, d );
                 var phi = this.zNum.toPolar().phi;
-                phi = _formatAngle( phi, this._daSettings.showDegree, d );
+                phi = _formatAngle( phi, this._daSettings.showDegree, this._daSettings.showPiFractions, d );
                 retval = r + "&middot;(cos(" + phi + ") + i &middot;sin(" + phi +"))";
                 return retval;
         };
@@ -582,7 +584,7 @@ function CNum(expr) {
         	var d = typeof decimals == 'undefined' ? this._daSettings.decimals : decimals;
                 var r = math.round( this.zNum.toPolar().r, d );
                 var phi = this.zNum.toPolar().phi;
-                phi = _formatAngle( phi, this._daSettings.showDegree, d );
+                phi = _formatAngle( phi, this._daSettings.showDegree, this._daSettings.showPiFractions, d );
                 retval = r + "&middot; e<sup>i " + phi + "</sup>";
                 return retval;
         };
