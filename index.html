@@ -85,7 +85,7 @@ axes automatically) and adding more CNums to the same canvas.</p>
 is able to do:</p>
 </div> 
 <pre><code>
-        var o1 = { clear: true, coords: true, circle: false, color: "#F00" };
+        var o1 = { clear: true, coords: true, circle: false, color: "#F00", showDegree: true };
         z1 = new CNum( "2+3i" );
 	var cnv2 = document.getElementById('id_of_canvas_2');
         z1.setCanvas( cnv2 );
@@ -182,7 +182,7 @@ is as simple as
 
         // construct a second CNum (z2) - when adding to an existing plot, options
         // clear, coords and circle are silently ignored.
-        var o2 = { clear: false, coords: false, circle: false, color: '#0F0', colarrow:true, arc:true };
+        var o2 = { clear: false, coords: false, circle: false, color: '#0F0', colarrow:true, arc:true, showDegree: true };
         z2 = new CNum( "-2+2i" );
         z1.addToPlot( z2, o2 );		// plot z2 on the canvas used by z1 using selected options
         
