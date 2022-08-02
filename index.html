@@ -174,7 +174,7 @@ is as simple as
     function displaySpecials() {
         // construct a complex number and plot it on canvas:
         //   Options: draw cartesian axes, no circle, real/imaginary part in red
-        var o1 = { clear: true, coords: true, circle: false, color: '#F00'};
+        var o1 = { clear: true, coords: true, circle: false, color: '#F00', showDegree: true};
         var cnv2 = document.getElementById('canvas2');
         z1 = new CNum( "2+3i" );
         z1.setCanvas( cnv2 );
@@ -182,7 +182,7 @@ is as simple as
 
         // construct a second CNum (z2) - when adding to an existing plot, options
         // clear, coords and circle are silently ignored.
-        var o2 = { clear: false, coords: false, circle: false, color: '#0F0', colarrow:true, arc:true, showDegree: true };
+        var o2 = { clear: false, coords: false, circle: false, color: '#0F0', colarrow:true, arc:true };
         z2 = new CNum( "-2+2i" );
         z1.addToPlot( z2, o2 );		// plot z2 on the canvas used by z1 using selected options
         
