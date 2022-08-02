@@ -5,14 +5,14 @@
 //
 /** 
  *  @file CNum.js: sketch the complex plane in a html5 canvas
- *  @author Marcus Oettinger
+ *  @author Marcus Oettinger <info@oettinger-phyiscs.de>
  *  @version 0.3.1
  *  @license MIT (see {@link http://opensource.org/licenses/MIT} or LICENSE).
  */
 /**
  * @class CNum.js
  * is a javascript object plotting a representation of a number z in the complex
- * plane. The idea is to set a complex value via an algebraic expression, 
+ * plane. The idea is to set a complex value by entering an algebraic expression, 
  * transform it into different bases and draw a Gaussian plot (aka Argand
  * diagram).
  * Here's a [demo page]{https://MarcusOettinger.github.io/CNum.js/}.<br>
@@ -496,7 +496,7 @@ function CNum(expr) {
         
         // return radius of the complex cartesian x+iy in gaussian plane
 	/** 
-	 * GetRadius(): return radius of the pointer
+	 * GetRadius(): return radius of the pointer (absolute value of the complex number)
 	 * @returns {float} radius of the complex number (norm)
 	 */
         this.GetRadius = function() { return _radius;  };
