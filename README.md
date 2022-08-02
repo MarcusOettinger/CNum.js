@@ -3,7 +3,7 @@
 #  Class CNum
 
 CNum.js is a javascript object plotting a representation of a number z in the
-complex plane. The idea is to set a complex value via an algebraic expression,
+complex plane. The idea is to set a complex value using an algebraic expression,
 transform it into different bases and draw a Gaussian plot (aka Argand
 diagram). Here's a [demo page](https://MarcusOettinger.github.io/CNum.js/ "Demo page").  
  
@@ -11,16 +11,16 @@ Graphics are drawn onto a html5 canvas - this should nowadays be supported by
 most browsers.  
   
 I wrote the code because I needed a dynamic plot of complex values in webpages
-for a a basic maths lecture. It serves a purpose and is far from being cleanly
+for a basic maths lecture. It serves a purpose and is far from being cleanly
 written, nicely formatted or similar.  
   
 CNum.js uses one external library:
-  * [mathjs](http://mathjs.org) (that can do much more!)  
+  * [mathjs](http://mathjs.org) (that can do much more!), Apache 2 - licensed.  
   
 Usage is simple: object = new CNum( expression ) creates a new CNum object - the
 complex value is set via an algebraic expression. For example,
 **_ z = new CNum("2+i"); _**    will create **_z_** with the value
-**_2+i_**.
+**_2+i_** where **_i_** ist the imaginary unit defined by **_i^2 = -1_**.
 
 For further information see the CNum.js [documentation](doc/index.html).
 
