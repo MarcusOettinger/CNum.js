@@ -95,7 +95,7 @@ function CNum(expr) {
             	arc: true, 		// show angle and value as an arc
             	showDegree: false,	// show angles in degree (otherwise radians)
 		showPiFractions: true,	// show angles in multiples of π (otherwise radians)
-            	decimals: 1,		// decimal places used in radius and angle values
+            	decimals: 2,		// decimal places used in radius and angle values
 		fontSize: '12px', 
             	fontFamily: "serif",
             	// colors
