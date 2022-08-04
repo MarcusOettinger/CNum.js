@@ -12,6 +12,9 @@
  */
 /**
  * @class CNum.js
+ a javascript object plotting a representation of a number z in the complex
+ * plane.
+ * @classdesc
  * is a javascript object plotting a representation of a number z in the complex
  * plane. The idea is to set a complex value by entering an algebraic
  * expression, transform it into different bases and draw a Gaussian plot
