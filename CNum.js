@@ -166,7 +166,7 @@ function CNum( expr ) {
 	 * _setFont: set the font to use on the canvas context.
 	 * @private
          * @param { ctx } the context
-         * @param { options } {@link CNum.options ('fontSize' and 'fontFamily'
+         * @param { options } {@link CNum.options} ('fontSize' and 'fontFamily'
 	 * can be used to define a font)
 	 */
 	function _setFont(ctx, params) {
@@ -504,7 +504,7 @@ function CNum( expr ) {
 	/** 
 	 * GetRadius(): return radius of the pointer (aka norm or absolute
 	 * value of the complex number).
-	 * @returns {float} radius of the complex number (norm)
+	 * @returns {float} radius (norm or absolute value) of the complex number.
 	 */
         this.GetRadius = function() { return _radius;  };
 
@@ -541,7 +541,7 @@ function CNum( expr ) {
 
 	// get the complex conjugate of z.
 	/** 
-	 * ToCc(): return a string of the complex conjugate z* in cartesian representation (e.g. '1-2i')
+	 * ToCc(): return a string of the complex conjugate z* in cartesian representation (e.g. '1-2i' for z = 1+2i)
          * @param { number } decimals: (optional) number of decimal places to round to (default: 1).
 	 * @returns {string} <b><i>z&#773;</i></b>, a  string containing the complex conjugate of <b><i>z</i></b>.
 	 */
@@ -565,7 +565,8 @@ function CNum( expr ) {
         // get the complex number z in trigonometric form with some 
         // html formatting (for the multiplication).
         /** 
-         * ToTrigonometric( decimals ): return a string of the complex number z in trigonometric representation (e.g. '2.236(cos(1.107) + i &middot; sin(1.107))')
+         * ToTrigonometric( decimals ): return a string of the complex number z in trigonometric
+	 * representation (e.g. '2.236(cos(1.107) + i &middot; sin(1.107))')
          * @param { number } decimals: (optional) number of decimal places to round to (default: 1)
          * @returns {string} a string containing the complex number as a mathematical expression in trigonometric notation.
          */
@@ -597,7 +598,7 @@ function CNum( expr ) {
         // the good stuff: Graphics
         // -----------------------------------------------------------------------------
         /**
-         * setCanvas( cnv ): set the canvas to plot on
+         * setCanvas( cnv ): set the canvas to plot on.
          * @param {integer} cnv the canvas to use
          * @returns { canvas } cnv 
          */
@@ -606,6 +607,25 @@ function CNum( expr ) {
         	_dactx = (cnv) ? cnv.getContext("2d") : null ;
         	return cnv;
         };
+	
+	/**
+	 * Return the current image as base64-encoded image-string
+         * @param { string } type type of image in the form of a standard MIME type.
+	 * Typical values for the type parameter are "image/png" or "image/jpeg".
+         * @returns { string } a base64-encoded image string.
+         */
+        this.getCanvasImage = function( type ) {
+        	if (_daCanvas.toDataURL) {
+			// JPEG quality defaults to 1
+			//if (quality === undefined) {
+				quality = 1;
+			//}
+			dataURL = _daCanvas.toDataURL('image/' + type, quality);
+		} else {
+			console.log('No toDataURL? Bummer!');
+		}
+		return dataURL;
+	}
 
         /**
          * getXPos(): get cartesian coordinate x of a given point (x/y) on the canvas
