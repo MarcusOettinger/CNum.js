@@ -40,7 +40,9 @@
  * number,<br>
  * e.g. <b><i> z = new CNum("2+i"); </i></b> &nbsp;&nbsp;
  * will create <b><i>z</i></b> with the value <b><i>2+i</i></b><br>.
- * @param {string} expr a text representing a complex number with imaginary unit i. Cartesian, trigonometric and polar expressions can be used, e.g. '2+3i' or '12*exp(3i)'
+ * @constructor
+ * @param {string} expr a text representing a complex number with imaginary unit i. Cartesian, trigonometric and polar expressions can be used.
+ * @example var foobar = new CNum('2+3i') or var baz = new CNum('12*exp(3i)')
  * <br><br>
 */
 function CNum( expr ) {
