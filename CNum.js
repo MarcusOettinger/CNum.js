@@ -1,4 +1,4 @@
-// Tue, 02 Aug 22 11:56:35 +0000
+// Sa 6. Aug 19:16:46 CEST 2022
 // M. Oettinger, Marcus -at- oettinger-physics.de
 //
 // v 0.6 - mathematical angle measurement (radians)
@@ -12,8 +12,6 @@
  */
 /**
  * @class CNum.js
- a javascript object plotting a representation of a number z in the complex
- * plane.
  * @classdesc
  * is a javascript object plotting a representation of a number z in the complex
  * plane. The idea is to set a complex value by entering an algebraic
