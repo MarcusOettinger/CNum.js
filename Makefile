@@ -18,6 +18,7 @@ minified: CNum.js
 
 doc: CNum.js
 	$(JSDOC) -d $(docdir)/ CNum.js
+	cp -R $(docdir) ../gh-pages/
 
 clean: 
 	test -d $(docdir) && rm -rf $(docdir)
