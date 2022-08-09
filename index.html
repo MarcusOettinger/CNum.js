@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/1.3.0/math.min.js"></script>
-    <script src='CNum.min.js'></script>
+    <script src='CNum.js'></script>
   </head>
 <body>
 <section class="page-header">
@@ -85,7 +85,7 @@ axes automatically) and adding more CNums to the same canvas.</p>
 is able to do:</p>
 </div> 
 <pre><code>
-        var o1 = { clear: true, coords: true, circle: false, color: "#F00" };
+        var o1 = { clear: true, coords: true, circle: false, color: "#F00", showDegree: true };
         z1 = new CNum( "2+3i" );
 	var cnv2 = document.getElementById('id_of_canvas_2');
         z1.setCanvas( cnv2 );
@@ -174,7 +174,7 @@ is as simple as
     function displaySpecials() {
         // construct a complex number and plot it on canvas:
         //   Options: draw cartesian axes, no circle, real/imaginary part in red
-        var o1 = { clear: true, coords: true, circle: false, color: '#F00'};
+        var o1 = { clear: true, coords: true, circle: false, color: '#F00', showDegree: true};
         var cnv2 = document.getElementById('canvas2');
         z1 = new CNum( "2+3i" );
         z1.setCanvas( cnv2 );
