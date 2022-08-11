@@ -11,7 +11,7 @@
  *  @license MIT (see {@link http://opensource.org/licenses/MIT} or LICENSE).
  */
 /**
- * @class CNum.js
+ * @class CNum
  * @classdesc
  * is a javascript object plotting a representation of a number z in the complex
  * plane. The idea is to set a complex value by entering an algebraic
@@ -168,6 +168,7 @@ function CNum( expr ) {
 	 *
 	 * _setFont: set the font to use on the canvas context.
 	 * @private
+	 * @memberOf CNum
          * @param { ctx } the context
          * @param { options } {@link CNum.options} ('fontSize' and 'fontFamily'
 	 * can be used to define a font)

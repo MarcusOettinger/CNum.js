@@ -14,10 +14,10 @@ love:
 
 minified: CNum.js
 	yui-compressor -o CNum.min.js CNum.js
-	cp CNum.js CNum.min.js ../gh-pages/CNum.js/
+	cp CNum.js CNum.min.js ../gh-pages/
 
 doc: CNum.js
-	$(JSDOC) -d $(docdir)/ CNum.js
+	$(JSDOC) -d $(docdir) CNum.js
 	cp -R $(docdir) ../gh-pages/
 
 clean: 
