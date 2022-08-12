@@ -22,7 +22,7 @@ complex value is set via an algebraic expression. For example,
 **_ z = new CNum("2+i"); _**    will create **_z_** with the value
 **_2+i_** where **_i_** ist the imaginary unit defined by **_i^2 = -1_**.
 
-For further information see the CNum.js [documentation](doc/index.html).
+For further information see the CNum.js [documentation](https://marcusoettinger.github.io/CNum.js/doc/index.html).
 
 ## Installation
 
