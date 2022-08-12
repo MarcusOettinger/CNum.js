@@ -5,6 +5,9 @@
 #
 # jsdoc (use v3+)
 JSDOC = jsdoc
+JSDOptions = -d
+# to document private methods, use
+# JSDOptions = -p -d
 docdir = ./doc 
 
 all: minified doc
@@ -17,7 +20,7 @@ minified: CNum.js
 	cp CNum.js CNum.min.js ../gh-pages/
 
 doc: CNum.js
-	$(JSDOC) -d $(docdir) CNum.js
+	$(JSDOC) $(JSDOptions) $(docdir) CNum.js
 	cp -R $(docdir) ../gh-pages/
 
 clean: 

@@ -38,10 +38,10 @@
  * number,<br>
  * e.g. <b><i> z = new CNum("2+i"); </i></b> &nbsp;&nbsp;
  * will create <b><i>z</i></b> with the value <b><i>2+i</i></b><br>.
- * @constructor
  * @param {string} expr a text representing a complex number with imaginary unit i. Cartesian, trigonometric and polar expressions can be used.
  * @example var foobar = new CNum('2+3i') or var baz = new CNum('12*exp(3i)')
  * <br><br>
+ * @constructor
 */
 function CNum( expr ) {
         // Private:
@@ -64,8 +64,7 @@ function CNum( expr ) {
 	 * Options used to change the appearance of a plot. This set of options
 	 * is used in all methods displaying numbers.
 	 * @name options
-	 * @memberOf CNum
-	 * @function options
+	 * @memberof CNum
          * @param {Object} options
          * @param {boolean} options.clear - set to true to remove canvas contents before drawing
          * @param {boolean} options.coords - set to true to draw a coordinate system
@@ -508,7 +507,11 @@ function CNum( expr ) {
 	/** 
 	 * GetRadius(): return radius of the pointer (aka norm or absolute
 	 * value of the complex number).
-	 * @returns {float} radius (norm or absolute value) of the complex number.
+	 * @returns {float} radius (norm or absolute value) of the complex
+	 * number.
+	 * @function GetRadius
+	 * @memberof CNum
+	 * @instance
 	 */
         this.GetRadius = function() { return _radius;  };
 
@@ -516,6 +519,9 @@ function CNum( expr ) {
 	/** 
 	 * GetSettings(): return current settings.
  	 * @returns { options } settings - {@link CNum.options}.
+	 * @function GetSettings
+	 * @memberOf CNum
+	 * @instance
 	 */
         this.GetSettings = function() { return this._daSettings; };
         
@@ -524,6 +530,9 @@ function CNum( expr ) {
 	 * SetSettings(): change current settings
  	 * @param { options } settings - CNum {@link options}.
  	 * @returns { options } settings - current CNum {@link options}.
+	 * @function SetSettings
+	 * @memberOf CNum
+	 * @instance
 	 */
         this.SetSettings = function( newsettings ) {
         	var s = this.GetSettings();
@@ -534,9 +543,15 @@ function CNum( expr ) {
 	// get the complex number z in cartesian coordinates as string
 	// with a bit of html.
 	/** 
-	 * ToCartesian(): Return a string of the complex number z in cartesian representation (e.g. '1+2i')
-         * @param { number } decimals: (optional) number of decimal places to round to (default: 1).
-	 * @returns {string} a string containing the simplest form of the complex number <b><i>z = x + i&middot;y</i></b>
+	 * ToCartesian(): Return a string of the complex number z in cartesian
+	 * representation (e.g. '1+2i')
+         * @param { number } decimals: (optional) number of decimal places to
+	 * round to (default: 1).
+	 * @returns {string} a string containing the simplest form of the
+	 * complex number <b><i>z = x + i&middot;y</i></b>
+	 * @function ToCartesian
+	 * @memberOf CNum
+	 * @instance
 	 */
 	this.ToCartesian = function() {
 		var d = typeof decimals == 'undefined' ? this._daSettings.decimals : decimals;
@@ -545,9 +560,15 @@ function CNum( expr ) {
 
 	// get the complex conjugate of z.
 	/** 
-	 * ToCc(): return a string of the complex conjugate z* in cartesian representation (e.g. '1-2i' for z = 1+2i)
-         * @param { number } decimals: (optional) number of decimal places to round to (default: 1).
-	 * @returns {string} <b><i>z&#773;</i></b>, a  string containing the complex conjugate of <b><i>z</i></b>.
+	 * ToCc(): return a string of the complex conjugate z* in cartesian
+	 * representation (e.g. '1-2i' for z = 1+2i)
+         * @param { number } decimals: (optional) number of decimal places to
+	 * round to (default: 1).
+	 * @returns {string} <b><i>z&#773;</i></b>, a  string containing the
+	 * complex conjugate of <b><i>z</i></b>.
+	 * @function ToCC
+	 * @memberOf CNum
+	 * @instance
 	 */
 	this.ToCC = function( decimals ) {
 		var d = typeof decimals == 'undefined' ? this._daSettings.decimals : decimals;
@@ -557,9 +578,14 @@ function CNum( expr ) {
  
         // Return the norm of the complex number z.
         /** 
-         * ToR(): return a string of the norm (length of the vector) of the complex number z (e.g. '2.236')
-         * @param { number } decimals: (optional) number of decimal places to round to (default: 1).
+         * ToR(): return a string of the norm (absolute value, the length of
+	 * the vector) of the complex number z (e.g. '2.236')
+         * @param { number } decimals: (optional) number of decimal places to
+	 * round to (default: 1).
          * @returns {string} a string containing the norm as a real number.
+	 * @function ToR
+	 * @memberOf CNum
+	 * @instance
          */
         this.ToR = function( decimals ) {
         	var d = typeof decimals == 'undefined' ? this._daSettings.decimals : decimals;
@@ -569,26 +595,38 @@ function CNum( expr ) {
         // get the complex number z in trigonometric form with some 
         // html formatting (for the multiplication).
         /** 
-         * ToTrigonometric( decimals ): return a string of the complex number z in trigonometric
-	 * representation (e.g. '2.236(cos(1.107) + i &middot; sin(1.107))')
-         * @param { number } decimals: (optional) number of decimal places to round to (default: 1)
-         * @returns {string} a string containing the complex number as a mathematical expression in trigonometric notation.
+         * ToTrigonometric( decimals ): return a string of the complex number z
+	 * in trigonometric representation
+	 * (e.g. '2.236 &middot; (cos(1.107) + i &middot; sin(1.107))')
+         * @param { number } decimals: (optional) number of decimal places to
+	 * round to (default: 1)
+         * @returns {string} a string containing the complex number as a
+	 * mathematical expression in trigonometric notation.
+	 * @function ToTrigonometric
+	 * @memberOf CNum
+	 * @instance
          */
         this.ToTrigonometric = function( decimals ) {
         	var d = typeof decimals == 'undefined' ? this._daSettings.decimals : decimals;
                 var r = math.round( this.zNum.toPolar().r, d );
                 var phi = this.zNum.toPolar().phi;
                 phi = _formatAngle( phi, this._daSettings.showDegree, this._daSettings.showPiFractions, d );
-                retval = r + "&middot;(cos(" + phi + ") + i &middot;sin(" + phi +"))";
+                retval = r + " &middot;(cos(" + phi + ") + i &middot;sin(" + phi +"))";
                 return retval;
         };
 
         // get the complex number z in polar coordinates with some 
         // html formatting (for the superscript in the exponential).
         /** 
-         * ToPolar( decimals ): create a string of the complex number z in polar representation (e.g. '2.236 e<sup>i 1.107</sup>')
-         * @param { number } decimals: (optional) number of decimal places to round to (default: 1)
-         * @returns {string} a string containing the number <b><i>z</i></b> in polar coordinates with a bit of html for the superscripts.
+         * ToPolar( decimals ): create a string of the complex number z in
+	 * polar representation (e.g. '2.236 e<sup>i 1.107</sup>')
+         * @param { number } decimals: (optional) number of decimal places to
+	 * round to (default: 1)
+         * @returns {string} a string containing the number <b><i>z</i></b> in
+	 * polar coordinates with a bit of html for the superscripts.
+	 * @function ToPolar
+	 * @memberOf CNum
+	 * @instance
          */
         this.ToPolar = function( decimals ) {
         	var d = typeof decimals == 'undefined' ? this._daSettings.decimals : decimals;
@@ -605,6 +643,9 @@ function CNum( expr ) {
          * setCanvas( cnv ): set the canvas to plot on.
          * @param {integer} cnv the canvas to use
          * @returns { canvas } cnv 
+	 * @function setCanvas
+	 * @memberOf CNum
+	 * @instance
          */
         this.setCanvas = function( cnv ) { 
         	_daCanvas = cnv;
@@ -617,6 +658,9 @@ function CNum( expr ) {
          * @param { string } type type of image in the form of a standard MIME type.
 	 * Typical values for the type parameter are "image/png" or "image/jpeg".
          * @returns { string } a base64-encoded image string.
+	 * @function getCanvasImage
+	 * @memberOf CNum
+	 * @instance
          */
         this.getCanvasImage = function( type ) {
         	if (_daCanvas.toDataURL) {
@@ -653,6 +697,9 @@ function CNum( expr ) {
 	 * @param { options } options set appearance of the complex number to multiply with (see {@link CNum.options})
 	 * @param { options } resultoptions change appearance of the resulting complex number (see {@link CNum.options})
 	 * @return { CNum } result of the operation as a CNum
+	 * @function multiplyCNum
+	 * @memberOf CNum
+	 * @instance
 	 */
         this.multiplyCNum =function( z2, options, resultoptions ){
 		var settings = extend( {}, _defaults, options, { circle: false } );
@@ -679,6 +726,9 @@ function CNum( expr ) {
 	 * @param { options } options set appearance of the complex number to add (see {@link CNum.options} for a list of possible settings)
 	 * @param { options } resultoptions change appearance of the resulting complex number (see {@link CNum.options} for a list of possible settings)
 	 * @return { CNum } the result of the operation as a CNum
+	 * @function addCNum
+	 * @memberOf CNum
+	 * @instance
 	 */
         this.addCNum =function(_zToAdd, options, resultoptions){
 		var settings = extend( {}, _defaults, options, { circle: false, arc: false, ReIm: false } );
@@ -702,6 +752,7 @@ function CNum( expr ) {
          * _drawToPlot ( z ): draw a complex number to the plot
          * @private
          * @param { CNum } z the complex number to draw to the current plot
+	 * @function CNum~_drawToPlot
          */
         this._drawToPlot = function( z ) {
         	var s = z.GetSettings();
@@ -717,6 +768,9 @@ function CNum( expr ) {
          * Caveat: the plot will not be rescaled nor cleared (of course).
          * @param { CNum } z the complex number to add to the current plot
 	 * @param { options } settings change plot appearance (see {@link CNum.options} for a list of possible settings)
+	 * @function addToPlot
+	 * @memberOf CNum
+	 * @instance
         */
         this.addToPlot = function( z, options ) {
         	var s = extend( {}, _defaults, options );
@@ -736,10 +790,11 @@ function CNum( expr ) {
 	 * This method either plots a single CNum or the first one in a series
 	 * of CNums drawn onto the same canvas. Additional numbers can be
 	 * displayed on that canvas using [addToPlot()]{@link CNum#addToPlot}.
+         * @see [addToPlot()]{@link CNum#addToPlot}: draw another number into an existing plot.
 	 * @param {options} options change plot appearance (see {@link CNum.options} for a list of possible settings).
          * @param {number} radius (optional) scale the plot for a complex number of this value (default: autoscale).
          * @see [setCanvas()]{@link CNum#setCanvas}: Set the canvas to draw on.
-         * @see [addToPlot()]{@link CNum#addToPlot}: draw another number into an existing plot.
+	 * @function CNum#displayGauss
         */
         this.displayGauss = function( options, radius ){
                 // handle defaults
